@@ -209,9 +209,12 @@ this behaviour.</p></li>
 </dl>
 <p class="rubric">Notes</p>
 <p>Depending on the input parameters different optimized implementation are used
-to improve the performance. Worst-case performance is <code class="docutils literal notranslate"><span class="pre">O(m</span> <span class="pre">*</span> <span class="pre">n)</span></code>.</p>
+to improve the performance.</p>
 <dl class="simple">
-<dt>Insertion = 1, Deletion = 1, Substitution = 1:</dt><dd><ul class="simple">
+<dt>Insertion = Deletion = Substitution:</dt><dd><p>This is known as uniform Levenshtein distance and is the distance most commonly
+referred to as Levenshtein distance. The following implementation is used
+with a worst-case performance of <code class="docutils literal notranslate"><span class="pre">O([N/64]M)</span></code>.</p>
+<ul class="simple">
 <li><p>if max is 0 the similarity can be calculated using a direct comparision,
 since no difference between the strings is allowed.  The time complexity of
 this algorithm is <code class="docutils literal notranslate"><span class="pre">O(N)</span></code>.</p></li>
@@ -232,10 +235,18 @@ The algorithm is described by <a class="footnote-reference brackets" href="#id8"
 algorithm is <code class="docutils literal notranslate"><span class="pre">O([N/64]M)</span></code>.</p></li>
 </ul>
 </dd>
-<dt>Insertion = 1, Deletion = 1, Substitution &gt;= Insertion + Deletion:</dt><dd><p>when <code class="docutils literal notranslate"><span class="pre">Substitution</span> <span class="pre">&gt;=</span> <span class="pre">Insertion</span> <span class="pre">+</span> <span class="pre">Deletion</span></code> set
-<code class="docutils literal notranslate"><span class="pre">Substitution</span> <span class="pre">=</span> <span class="pre">Insertion</span> <span class="pre">+</span> <span class="pre">Deletion</span></code>
-since every Substitution can be performed as Insertion + Deletion
-so in this case treat Substitution as 2</p>
+</dl>
+<p>The following image shows a benchmark of the Levenshtein distance in multiple
+Python libraries. All of them are implemented either in C/C++ or Cython.
+The graph shows, that python-Levenshtein is the only library with a time
+complexity of <code class="docutils literal notranslate"><span class="pre">O(NM)</span></code>, while all other libraries have a time complexity of
+<code class="docutils literal notranslate"><span class="pre">O([N/64]M)</span></code>. Especially for long strings RapidFuzz is a lot faster than
+all the other tested libraries.</p>
+<img alt="_images/uniform_levenshtein.svg" src="_images/uniform_levenshtein.svg" /><dl class="simple">
+<dt>Insertion = Deletion, Substitution &gt;= Insertion + Deletion:</dt><dd><p>Since every Substitution can be performed as Insertion + Deletion, this variant
+of the Levenshtein distance only uses Insertions and Deletions. Therefore this
+variant is often referred to as InDel-Distance.  The following implementation
+is used with a worst-case performance of <code class="docutils literal notranslate"><span class="pre">O([N/64]M)</span></code>.</p>
 <ul class="simple">
 <li><p>if max is 0 the similarity can be calculated using a direct comparision,
 since no difference between the strings is allowed.  The time complexity of
@@ -258,13 +269,19 @@ the BitPAl algorithm is used, which calculates the Levenshtein distance in
 parallel. The algorithm is described by <a class="footnote-reference brackets" href="#id9" id="id3">4</a> and is extended with support
 for UTF32 in this implementation. The time complexity of this
 algorithm is <code class="docutils literal notranslate"><span class="pre">O(N)</span></code>.</p></li>
-<li><p>In all other cases the Levenshtein distance is calculated using
-Wagner-Fischer with Ukkonens optimization as described by <a class="footnote-reference brackets" href="#id7" id="id4">2</a>. The time
-complexity of this algorithm is <code class="docutils literal notranslate"><span class="pre">O(N</span> <span class="pre">*</span> <span class="pre">M)</span></code>.
-This can be replaced with a blockwise implementation of the BitPal algorithm
-in the future.</p></li>
+<li><p>If the length of the shorter string is ≥ 64 after removing the common affix
+a blockwise implementation of the BitPAl algorithm is used, which calculates
+the Levenshtein distance in parallel (64 characters at a time).
+The algorithm is described by <a class="footnote-reference brackets" href="#id9" id="id4">4</a>. The time complexity of this
+algorithm is <code class="docutils literal notranslate"><span class="pre">O([N/64]M)</span></code>.</p></li>
 </ul>
 </dd>
+</dl>
+<p>The following image shows a benchmark of the InDel distance in RapidFuzz
+and python-Levenshtein. Similar to the normal Levenshtein distance
+python-Levenshtein uses a implementation with a time complexity of <code class="docutils literal notranslate"><span class="pre">O(NM)</span></code>,
+while RapidFuzz has a time complexity of <code class="docutils literal notranslate"><span class="pre">O([N/64]M)</span></code>.</p>
+<img alt="_images/indel_levenshtein.svg" src="_images/indel_levenshtein.svg" /><dl class="simple">
 <dt>Other weights:</dt><dd><p>The implementation for other weights is based on Wagner-Fischer.
 It has a performance of <code class="docutils literal notranslate"><span class="pre">O(N</span> <span class="pre">*</span> <span class="pre">M)</span></code> and has a memory usage of <code class="docutils literal notranslate"><span class="pre">O(N)</span></code>.
 Further details can be found in <a class="footnote-reference brackets" href="#id7" id="id5">2</a>.</p>
@@ -277,7 +294,7 @@ Further details can be found in <a class="footnote-reference brackets" href="#id
 Levenshtein and Damerau Edit Distances.”
 Nordic Journal of Computing, Volume 10 (2003): 29-39.</p>
 </dd>
-<dt class="label" id="id7"><span class="brackets">2</span><span class="fn-backref">(<a href="#id4">1</a>,<a href="#id5">2</a>)</span></dt>
+<dt class="label" id="id7"><span class="brackets"><a class="fn-backref" href="#id5">2</a></span></dt>
 <dd><p>Wagner, Robert &amp; Fischer, Michael
 “The String-to-String Correction Problem.”
 J. ACM. 21. (1974): 168-173</p>
@@ -287,7 +304,7 @@ J. ACM. 21. (1974): 168-173</p>
 string matching based on dynamic programming.”
 Journal of the ACM (JACM) 46.3 (1999): 395-415.</p>
 </dd>
-<dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id3">4</a></span></dt>
+<dt class="label" id="id9"><span class="brackets">4</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id4">2</a>)</span></dt>
 <dd><p>Loving, Joshua &amp; Hernández, Yözen &amp; Benson, Gary.
 “BitPAl: A Bit-Parallel, General Integer-Scoring Sequence
 Alignment Algorithm. Bioinformatics”
@@ -405,7 +422,10 @@ tuple.</p>
 <dl class="py function">
 <dt id="rapidfuzz.string_metric.hamming">
 <code class="sig-prename descclassname"><span class="pre">rapidfuzz.string_metric.</span></code><code class="sig-name descname"><span class="pre">hamming</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.string_metric.hamming" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculates the Hamming distance between two strings.</p>
+<dd><p>Calculates the Hamming distance between two strings.
+The hamming distance is defined as the number of positions
+where the two strings differ. It describes the minimum
+amount of substitutions required to transform s1 into s2.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -422,6 +442,9 @@ this behaviour.</p></li>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>int</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If s1 and s2 have a different length</p>
 </dd>
 </dl>
 </dd></dl>
@@ -453,7 +476,17 @@ as a float between 0 and 100</p>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>float</p>
 </dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If s1 and s2 have a different length</p>
+</dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#rapidfuzz.string_metric.hamming" title="rapidfuzz.string_metric.hamming"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hamming</span></code></a></dt><dd><p>Hamming distance</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 </div>
