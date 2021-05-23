@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
 
   
   
@@ -29,6 +31,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -186,8 +189,8 @@
 <div class="section" id="ratio">
 <h2>ratio<a class="headerlink" href="#ratio" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
-<dt id="rapidfuzz.fuzz.ratio">
-<code class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></code><code class="sig-name descname"><span class="pre">ratio</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.ratio" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="rapidfuzz.fuzz.ratio">
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.ratio" title="Permalink to this definition">¶</a></dt>
 <dd><p>calculates a simple ratio between two strings. This is a simple wrapper
 for string_metric.normalized_levenshtein using the weights:
 - weights = (1, 1, 2)</p>
@@ -205,7 +208,7 @@ which deactivates this behaviour.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>ratio</strong> – ratio distance between s1 and s2 as a float between 0 and 100</p>
+<dd class="field-even"><p><strong>similarity</strong> – similarity between s1 and s2 as a float between 0 and 100</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>float</p>
@@ -223,8 +226,8 @@ which deactivates this behaviour.</p></li>
 <div class="section" id="partial-ratio">
 <h2>partial_ratio<a class="headerlink" href="#partial-ratio" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
-<dt id="rapidfuzz.fuzz.partial_ratio">
-<code class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></code><code class="sig-name descname"><span class="pre">partial_ratio</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.partial_ratio" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="rapidfuzz.fuzz.partial_ratio">
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">partial_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.partial_ratio" title="Permalink to this definition">¶</a></dt>
 <dd><p>calculates the fuzz.ratio of the optimal string alignment</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -240,7 +243,7 @@ which deactivates this behaviour.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>ratio</strong> – ratio distance between s1 and s2 as a float between 0 and 100</p>
+<dd class="field-even"><p><strong>similarity</strong> – similarity between s1 and s2 as a float between 0 and 100</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>float</p>
@@ -258,8 +261,8 @@ which deactivates this behaviour.</p></li>
 <div class="section" id="token-set-ratio">
 <h2>token_set_ratio<a class="headerlink" href="#token-set-ratio" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
-<dt id="rapidfuzz.fuzz.token_set_ratio">
-<code class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></code><code class="sig-name descname"><span class="pre">token_set_ratio</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.token_set_ratio" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="rapidfuzz.fuzz.token_set_ratio">
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">token_set_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.token_set_ratio" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compares the words in the strings based on unique and common words between them
 using fuzz.ratio</p>
 <dl class="field-list simple">
@@ -276,7 +279,7 @@ which deactivates this behaviour.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>ratio</strong> – ratio distance between s1 and s2 as a float between 0 and 100</p>
+<dd class="field-even"><p><strong>similarity</strong> – similarity between s1 and s2 as a float between 0 and 100</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>float</p>
@@ -296,8 +299,8 @@ which deactivates this behaviour.</p></li>
 <div class="section" id="partial-token-set-ratio">
 <h2>partial_token_set_ratio<a class="headerlink" href="#partial-token-set-ratio" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
-<dt id="rapidfuzz.fuzz.partial_token_set_ratio">
-<code class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></code><code class="sig-name descname"><span class="pre">partial_token_set_ratio</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.partial_token_set_ratio" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="rapidfuzz.fuzz.partial_token_set_ratio">
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">partial_token_set_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.partial_token_set_ratio" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compares the words in the strings based on unique and common words between them
 using fuzz.partial_ratio</p>
 <dl class="field-list simple">
@@ -314,7 +317,7 @@ which deactivates this behaviour.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>ratio</strong> – ratio distance between s1 and s2 as a float between 0 and 100</p>
+<dd class="field-even"><p><strong>similarity</strong> – similarity between s1 and s2 as a float between 0 and 100</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>float</p>
@@ -327,8 +330,8 @@ which deactivates this behaviour.</p></li>
 <div class="section" id="token-sort-ratio">
 <h2>token_sort_ratio<a class="headerlink" href="#token-sort-ratio" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
-<dt id="rapidfuzz.fuzz.token_sort_ratio">
-<code class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></code><code class="sig-name descname"><span class="pre">token_sort_ratio</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.token_sort_ratio" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="rapidfuzz.fuzz.token_sort_ratio">
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">token_sort_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.token_sort_ratio" title="Permalink to this definition">¶</a></dt>
 <dd><p>sorts the words in the strings and calculates the fuzz.ratio between them</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -344,7 +347,7 @@ which deactivates this behaviour.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>ratio</strong> – ratio distance between s1 and s2 as a float between 0 and 100</p>
+<dd class="field-even"><p><strong>similarity</strong> – similarity between s1 and s2 as a float between 0 and 100</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>float</p>
@@ -362,8 +365,8 @@ which deactivates this behaviour.</p></li>
 <div class="section" id="partial-token-sort-ratio">
 <h2>partial_token_sort_ratio<a class="headerlink" href="#partial-token-sort-ratio" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
-<dt id="rapidfuzz.fuzz.partial_token_sort_ratio">
-<code class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></code><code class="sig-name descname"><span class="pre">partial_token_sort_ratio</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.partial_token_sort_ratio" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="rapidfuzz.fuzz.partial_token_sort_ratio">
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">partial_token_sort_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.partial_token_sort_ratio" title="Permalink to this definition">¶</a></dt>
 <dd><p>sorts the words in the strings and calculates the fuzz.partial_ratio between them</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -379,7 +382,7 @@ which deactivates this behaviour.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>ratio</strong> – ratio distance between s1 and s2 as a float between 0 and 100</p>
+<dd class="field-even"><p><strong>similarity</strong> – similarity between s1 and s2 as a float between 0 and 100</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>float</p>
@@ -392,8 +395,8 @@ which deactivates this behaviour.</p></li>
 <div class="section" id="token-ratio">
 <h2>token_ratio<a class="headerlink" href="#token-ratio" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
-<dt id="rapidfuzz.fuzz.token_ratio">
-<code class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></code><code class="sig-name descname"><span class="pre">token_ratio</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.token_ratio" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="rapidfuzz.fuzz.token_ratio">
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">token_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.token_ratio" title="Permalink to this definition">¶</a></dt>
 <dd><p>Helper method that returns the maximum of fuzz.token_set_ratio and fuzz.token_sort_ratio
 (faster than manually executing the two functions)</p>
 <dl class="field-list simple">
@@ -410,7 +413,7 @@ which deactivates this behaviour.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>ratio</strong> – ratio distance between s1 and s2 as a float between 0 and 100</p>
+<dd class="field-even"><p><strong>similarity</strong> – similarity between s1 and s2 as a float between 0 and 100</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>float</p>
@@ -423,8 +426,8 @@ which deactivates this behaviour.</p></li>
 <div class="section" id="partial-token-ratio">
 <h2>partial_token_ratio<a class="headerlink" href="#partial-token-ratio" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
-<dt id="rapidfuzz.fuzz.partial_token_ratio">
-<code class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></code><code class="sig-name descname"><span class="pre">partial_token_ratio</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.partial_token_ratio" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="rapidfuzz.fuzz.partial_token_ratio">
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">partial_token_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.partial_token_ratio" title="Permalink to this definition">¶</a></dt>
 <dd><p>Helper method that returns the maximum of fuzz.partial_token_set_ratio and
 fuzz.partial_token_sort_ratio (faster than manually executing the two functions)</p>
 <dl class="field-list simple">
@@ -441,7 +444,7 @@ which deactivates this behaviour.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>ratio</strong> – ratio distance between s1 and s2 as a float between 0 and 100</p>
+<dd class="field-even"><p><strong>similarity</strong> – similarity between s1 and s2 as a float between 0 and 100</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>float</p>
@@ -454,8 +457,8 @@ which deactivates this behaviour.</p></li>
 <div class="section" id="wratio">
 <h2>WRatio<a class="headerlink" href="#wratio" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
-<dt id="rapidfuzz.fuzz.WRatio">
-<code class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></code><code class="sig-name descname"><span class="pre">WRatio</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.WRatio" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="rapidfuzz.fuzz.WRatio">
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">WRatio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.WRatio" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates a weighted ratio based on the other ratio algorithms</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -471,7 +474,7 @@ which deactivates this behaviour.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>ratio</strong> – ratio distance between s1 and s2 as a float between 0 and 100</p>
+<dd class="field-even"><p><strong>similarity</strong> – similarity between s1 and s2 as a float between 0 and 100</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>float</p>
@@ -484,8 +487,8 @@ which deactivates this behaviour.</p></li>
 <div class="section" id="qratio">
 <h2>QRatio<a class="headerlink" href="#qratio" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
-<dt id="rapidfuzz.fuzz.QRatio">
-<code class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></code><code class="sig-name descname"><span class="pre">QRatio</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.QRatio" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="rapidfuzz.fuzz.QRatio">
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">QRatio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.QRatio" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates a quick ratio between two strings using fuzz.ratio.
 The only difference to fuzz.ratio is, that this preprocesses
 the strings by default.</p>
@@ -503,14 +506,14 @@ which deactivates this behaviour.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>ratio</strong> – ratio distance between s1 and s2 as a float between 0 and 100</p>
+<dd class="field-even"><p><strong>similarity</strong> – similarity between s1 and s2 as a float between 0 and 100</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fuzz</span><span class="o">.</span><span class="n">QRatio</span><span class="p">(</span><span class="s2">&quot;this is a test&quot;</span><span class="p">,</span> <span class="s2">&quot;this is a test!&quot;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fuzz</span><span class="o">.</span><span class="n">QRatio</span><span class="p">(</span><span class="s2">&quot;this is a test&quot;</span><span class="p">,</span> <span class="s2">&quot;THIS is a test!&quot;</span><span class="p">)</span>
 <span class="go">100.0</span>
 </pre></div>
 </div>
