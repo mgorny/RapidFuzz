@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>string_metric module &mdash; RapidFuzz 1.0.0 documentation</title>
+  <title>string_metric module &mdash; RapidFuzz 1.5.0 documentation</title>
   
 
   
@@ -100,6 +100,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#normalized-levenshtein">normalized_levenshtein</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#hamming">hamming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#normalized-hamming">normalized_hamming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#jaro-similarity">jaro_similarity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#jaro-winkler-similarity">jaro_winkler_similarity</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="process.html">process module</a></li>
@@ -499,6 +501,65 @@ which deactivates this behaviour.</p></li>
 </dd>
 </dl>
 </div>
+</dd></dl>
+
+</div>
+<div class="section" id="jaro-similarity">
+<h2>jaro_similarity<a class="headerlink" href="#jaro-similarity" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="rapidfuzz.string_metric.jaro_similarity">
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.string_metric.</span></span><span class="sig-name descname"><span class="pre">jaro_similarity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.string_metric.jaro_similarity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the jaro similarity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s1</strong> (<em>str</em>) – First string to compare.</p></li>
+<li><p><strong>s2</strong> (<em>str</em>) – Second string to compare.</p></li>
+<li><p><strong>processor</strong> (<em>bool</em><em> or </em><em>callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
+comparing them. When processor is True <code class="docutils literal notranslate"><span class="pre">utils.default_process</span></code>
+is used. Default is None, which deactivates this behaviour.</p></li>
+<li><p><strong>score_cutoff</strong> (<em>float</em><em>, </em><em>optional</em>) – Optional argument for a score threshold as a float between 0 and 100.
+For ratio &lt; score_cutoff 0 is returned instead. Default is 0,
+which deactivates this behaviour.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>similarity</strong> – similarity between s1 and s2 as a float between 0 and 100</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="jaro-winkler-similarity">
+<h2>jaro_winkler_similarity<a class="headerlink" href="#jaro-winkler-similarity" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="rapidfuzz.string_metric.jaro_winkler_similarity">
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.string_metric.</span></span><span class="sig-name descname"><span class="pre">jaro_winkler_similarity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.string_metric.jaro_winkler_similarity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the jaro winkler similarity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s1</strong> (<em>str</em>) – First string to compare.</p></li>
+<li><p><strong>s2</strong> (<em>str</em>) – Second string to compare.</p></li>
+<li><p><strong>prefix_weight</strong> (<em>float</em><em>, </em><em>optional</em>) – weight used for the common prefix of the two strings. Default is 0.1.</p></li>
+<li><p><strong>processor</strong> (<em>bool</em><em> or </em><em>callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
+comparing them. When processor is True <code class="docutils literal notranslate"><span class="pre">utils.default_process</span></code>
+is used. Default is None, which deactivates this behaviour.</p></li>
+<li><p><strong>score_cutoff</strong> (<em>float</em><em>, </em><em>optional</em>) – Optional argument for a score threshold as a float between 0 and 100.
+For ratio &lt; score_cutoff 0 is returned instead. Default is 0,
+which deactivates this behaviour.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>similarity</strong> – similarity between s1 and s2 as a float between 0 and 100</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
