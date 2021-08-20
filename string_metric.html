@@ -544,7 +544,8 @@ which deactivates this behaviour.</p></li>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>s1</strong> (<em>str</em>) – First string to compare.</p></li>
 <li><p><strong>s2</strong> (<em>str</em>) – Second string to compare.</p></li>
-<li><p><strong>prefix_weight</strong> (<em>float</em><em>, </em><em>optional</em>) – weight used for the common prefix of the two strings. Default is 0.1.</p></li>
+<li><p><strong>prefix_weight</strong> (<em>float</em><em>, </em><em>optional</em>) – Weight used for the common prefix of the two strings.
+Has to be between 0 and 0.25. Default is 0.1.</p></li>
 <li><p><strong>processor</strong> (<em>bool</em><em> or </em><em>callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
 comparing them. When processor is True <code class="docutils literal notranslate"><span class="pre">utils.default_process</span></code>
 is used. Default is None, which deactivates this behaviour.</p></li>
@@ -558,6 +559,9 @@ which deactivates this behaviour.</p></li>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>float</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If prefix_weight is invalid</p>
 </dd>
 </dl>
 </dd></dl>
