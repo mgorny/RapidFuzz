@@ -195,8 +195,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>s1</strong> (<em>str</em>) – First string to compare.</p></li>
-<li><p><strong>s2</strong> (<em>str</em>) – Second string to compare.</p></li>
+<li><p><strong>s1</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – First string to compare.</p></li>
+<li><p><strong>s2</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – Second string to compare.</p></li>
 <li><p><strong>processor</strong> (<em>bool</em><em> or </em><em>callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
 comparing them. When processor is True <code class="docutils literal notranslate"><span class="pre">utils.default_process</span></code>
 is used. Default is None, which deactivates this behaviour.</p></li>
@@ -238,8 +238,8 @@ longer string and returns the fuzz.ratio for this alignment.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>s1</strong> (<em>str</em>) – First string to compare.</p></li>
-<li><p><strong>s2</strong> (<em>str</em>) – Second string to compare.</p></li>
+<li><p><strong>s1</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – First string to compare.</p></li>
+<li><p><strong>s2</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – Second string to compare.</p></li>
 <li><p><strong>processor</strong> (<em>bool</em><em> or </em><em>callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
 comparing them. When processor is True <code class="docutils literal notranslate"><span class="pre">utils.default_process</span></code>
 is used. Default is None, which deactivates this behaviour.</p></li>
@@ -303,8 +303,8 @@ using fuzz.ratio</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>s1</strong> (<em>str</em>) – First string to compare.</p></li>
-<li><p><strong>s2</strong> (<em>str</em>) – Second string to compare.</p></li>
+<li><p><strong>s1</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – First string to compare.</p></li>
+<li><p><strong>s2</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – Second string to compare.</p></li>
 <li><p><strong>processor</strong> (<em>bool</em><em> or </em><em>callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
 comparing them. When processor is True <code class="docutils literal notranslate"><span class="pre">utils.default_process</span></code>
 is used. Default is True.</p></li>
@@ -341,8 +341,8 @@ using fuzz.partial_ratio</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>s1</strong> (<em>str</em>) – First string to compare.</p></li>
-<li><p><strong>s2</strong> (<em>str</em>) – Second string to compare.</p></li>
+<li><p><strong>s1</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – First string to compare.</p></li>
+<li><p><strong>s2</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – Second string to compare.</p></li>
 <li><p><strong>processor</strong> (<em>bool</em><em> or </em><em>callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
 comparing them. When processor is True <code class="docutils literal notranslate"><span class="pre">utils.default_process</span></code>
 is used. Default is True.</p></li>
@@ -371,8 +371,8 @@ which deactivates this behaviour.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>s1</strong> (<em>str</em>) – First string to compare.</p></li>
-<li><p><strong>s2</strong> (<em>str</em>) – Second string to compare.</p></li>
+<li><p><strong>s1</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – First string to compare.</p></li>
+<li><p><strong>s2</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – Second string to compare.</p></li>
 <li><p><strong>processor</strong> (<em>bool</em><em> or </em><em>callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
 comparing them. When processor is True <code class="docutils literal notranslate"><span class="pre">utils.default_process</span></code>
 is used. Default is True.</p></li>
@@ -406,8 +406,8 @@ which deactivates this behaviour.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>s1</strong> (<em>str</em>) – First string to compare.</p></li>
-<li><p><strong>s2</strong> (<em>str</em>) – Second string to compare.</p></li>
+<li><p><strong>s1</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – First string to compare.</p></li>
+<li><p><strong>s2</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – Second string to compare.</p></li>
 <li><p><strong>processor</strong> (<em>bool</em><em> or </em><em>callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
 comparing them. When processor is True <code class="docutils literal notranslate"><span class="pre">utils.default_process</span></code>
 is used. Default is True.</p></li>
@@ -437,8 +437,8 @@ which deactivates this behaviour.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>s1</strong> (<em>str</em>) – First string to compare.</p></li>
-<li><p><strong>s2</strong> (<em>str</em>) – Second string to compare.</p></li>
+<li><p><strong>s1</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – First string to compare.</p></li>
+<li><p><strong>s2</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – Second string to compare.</p></li>
 <li><p><strong>processor</strong> (<em>bool</em><em> or </em><em>callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
 comparing them. When processor is True <code class="docutils literal notranslate"><span class="pre">utils.default_process</span></code>
 is used. Default is True.</p></li>
@@ -468,8 +468,8 @@ fuzz.partial_token_sort_ratio (faster than manually executing the two functions)
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>s1</strong> (<em>str</em>) – First string to compare.</p></li>
-<li><p><strong>s2</strong> (<em>str</em>) – Second string to compare.</p></li>
+<li><p><strong>s1</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – First string to compare.</p></li>
+<li><p><strong>s2</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – Second string to compare.</p></li>
 <li><p><strong>processor</strong> (<em>bool</em><em> or </em><em>callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
 comparing them. When processor is True <code class="docutils literal notranslate"><span class="pre">utils.default_process</span></code>
 is used. Default is True.</p></li>
@@ -498,8 +498,8 @@ which deactivates this behaviour.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>s1</strong> (<em>str</em>) – First string to compare.</p></li>
-<li><p><strong>s2</strong> (<em>str</em>) – Second string to compare.</p></li>
+<li><p><strong>s1</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – First string to compare.</p></li>
+<li><p><strong>s2</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – Second string to compare.</p></li>
 <li><p><strong>processor</strong> (<em>bool</em><em> or </em><em>callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
 comparing them. When processor is True <code class="docutils literal notranslate"><span class="pre">utils.default_process</span></code>
 is used. Default is True.</p></li>
@@ -530,8 +530,8 @@ the strings by default.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>s1</strong> (<em>str</em>) – First string to compare.</p></li>
-<li><p><strong>s2</strong> (<em>str</em>) – Second string to compare.</p></li>
+<li><p><strong>s1</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – First string to compare.</p></li>
+<li><p><strong>s2</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – Second string to compare.</p></li>
 <li><p><strong>processor</strong> (<em>bool</em><em> or </em><em>callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
 comparing them. When processor is True <code class="docutils literal notranslate"><span class="pre">utils.default_process</span></code>
 is used. Default is True.</p></li>

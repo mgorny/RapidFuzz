@@ -189,8 +189,8 @@ When multiple choices have the same similarity, they are sorted by their index</
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>query</strong> (<em>str</em>) – string we want to find</p></li>
-<li><p><strong>choices</strong> (<em>Iterable</em>) – list of all strings the query should be compared with or dict with a mapping
+<li><p><strong>query</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – string we want to find</p></li>
+<li><p><strong>choices</strong> (<em>Collection</em><em>[</em><em>Sequence</em><em>[</em><em>Hashable</em><em>]</em><em>] </em><em>| </em><em>Mapping</em><em>[</em><em>Sequence</em><em>[</em><em>Hashable</em><em>]</em><em>]</em>) – list of all strings the query should be compared with or dict with a mapping
 {&lt;result&gt;: &lt;string to compare&gt;}</p></li>
 <li><p><strong>scorer</strong> (<em>Callable</em><em>, </em><em>optional</em>) – Optional callable that is used to calculate the matching score between
 the query and each choice. This can be any of the scorers included in RapidFuzz
@@ -237,7 +237,7 @@ has the <cite>highest similarity</cite>/<cite>smallest distance</cite>.</p>
 </p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>List[Tuple[str, Any, Any]]</p>
+<dd class="field-odd"><p>List[Tuple[Sequence[Hashable], Any, Any]]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -252,8 +252,8 @@ has the <cite>highest similarity</cite>/<cite>smallest distance</cite>.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>query</strong> (<em>str</em>) – string we want to find</p></li>
-<li><p><strong>choices</strong> (<em>Iterable</em>) – list of all strings the query should be compared with or dict with a mapping
+<li><p><strong>query</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – string we want to find</p></li>
+<li><p><strong>choices</strong> (<em>Iterable</em><em>[</em><em>Sequence</em><em>[</em><em>Hashable</em><em>]</em><em>] </em><em>| </em><em>Mapping</em><em>[</em><em>Sequence</em><em>[</em><em>Hashable</em><em>]</em><em>]</em>) – list of all strings the query should be compared with or dict with a mapping
 {&lt;result&gt;: &lt;string to compare&gt;}</p></li>
 <li><p><strong>scorer</strong> (<em>Callable</em><em>, </em><em>optional</em>) – Optional callable that is used to calculate the matching score between
 the query and each choice. This can be any of the scorers included in RapidFuzz
@@ -272,7 +272,7 @@ e.g. weights to string_metric.levenshtein</p></li>
 </ul>
 </dd>
 <dt class="field-even">Yields</dt>
-<dd class="field-even"><p><em>Tuple[str, Any, Any]</em> – Yields similarity between the query and each choice in form of a Tuple with 3 elements.
+<dd class="field-even"><p><em>Tuple[Sequence[Hashable], Any, Any]</em> – Yields similarity between the query and each choice in form of a Tuple with 3 elements.
 The values stored in the tuple depend on the types of the input arguments.</p>
 <ul>
 <li><p>The first element is always the current <cite>choice</cite>, which is the value thats compared to the query.</p></li>
@@ -309,8 +309,8 @@ the first element is returned.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>query</strong> (<em>str</em>) – string we want to find</p></li>
-<li><p><strong>choices</strong> (<em>Iterable</em>) – list of all strings the query should be compared with or dict with a mapping
+<li><p><strong>query</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – string we want to find</p></li>
+<li><p><strong>choices</strong> (<em>Iterable</em><em>[</em><em>Sequence</em><em>[</em><em>Hashable</em><em>]</em><em>] </em><em>| </em><em>Mapping</em><em>[</em><em>Sequence</em><em>[</em><em>Hashable</em><em>]</em><em>]</em>) – list of all strings the query should be compared with or dict with a mapping
 {&lt;result&gt;: &lt;string to compare&gt;}</p></li>
 <li><p><strong>scorer</strong> (<em>Callable</em><em>, </em><em>optional</em>) – Optional callable that is used to calculate the matching score between
 the query and each choice. This can be any of the scorers included in RapidFuzz
@@ -330,7 +330,7 @@ e.g. weights to string_metric.levenshtein</p></li>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul>
-<li><p><em>Tuple[str, Any, Any]</em> – Returns the best match in form of a Tuple with 3 elements. The values stored in the
+<li><p><em>Tuple[Sequence[Hashable], Any, Any]</em> – Returns the best match in form of a Tuple with 3 elements. The values stored in the
 tuple depend on the types of the input arguments.</p>
 <ul>
 <li><p>The first element is always the <cite>choice</cite>, which is the value thats compared to the query.</p></li>
