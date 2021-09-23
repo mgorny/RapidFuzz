@@ -93,38 +93,8 @@
 <h2>cdist<a class="headerlink" href="#cdist" title="Permalink to this headline"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="rapidfuzz.process.cdist">
-<span class="sig-prename descclassname"><span class="pre">rapidfuzz.process.</span></span><span class="sig-name descname"><span class="pre">cdist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">queries</span></em>, <em class="sig-param"><span class="pre">choices</span></em>, <em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">scorer=&lt;cyfunction</span> <span class="pre">ratio&gt;</span></em>, <em class="sig-param"><span class="pre">processor=None</span></em>, <em class="sig-param"><span class="pre">score_cutoff=None</span></em>, <em class="sig-param"><span class="pre">**kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.process.cdist" title="Permalink to this definition"></a></dt>
-<dd><p>Compute distance/similarity between each pair of the two collections of inputs.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>queries</strong> (<em>Collection</em><em>[</em><em>Sequence</em><em>[</em><em>Hashable</em><em>]</em><em>]</em>) – list of all strings the queries</p></li>
-<li><p><strong>choices</strong> (<em>Collection</em><em>[</em><em>Sequence</em><em>[</em><em>Hashable</em><em>]</em><em>]</em>) – list of all strings the query should be compared</p></li>
-<li><p><strong>scorer</strong> (<em>Callable</em><em>, </em><em>optional</em>) – Optional callable that is used to calculate the matching score between
-the query and each choice. This can be any of the scorers included in RapidFuzz
-(both scorers that calculate the edit distance or the normalized edit distance).
-Custom functions are not supported so far!
-fuzz.ratio is used by default.</p></li>
-<li><p><strong>processor</strong> (<em>Callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
-comparing them. When processor is True <code class="docutils literal notranslate"><span class="pre">utils.default_process</span></code>
-is used. Default is None, which deactivates this behaviour.</p></li>
-<li><p><strong>score_cutoff</strong> (<em>Any</em><em>, </em><em>optional</em>) – Optional argument for a score threshold. When an edit distance is used this represents the maximum
-edit distance and matches with a <cite>distance &lt;= score_cutoff</cite> are inserted as -1. When a
-normalized edit distance is used this represents the minimal similarity
-and matches with a <cite>similarity &gt;= score_cutoff</cite> are inserted as 0.
-Default is None, which deactivates this behaviour.</p></li>
-<li><p><strong>**kwargs</strong> (<em>Any</em><em>, </em><em>optional</em>) – any other named parameters are passed to the scorer. This can be used to pass
-e.g. weights to string_metric.levenshtein</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>List[Tuple[Sequence[Hashable], Any, Any]]</p>
-</dd>
-</dl>
-</dd></dl>
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.process.</span></span><span class="sig-name descname"><span class="pre">cdist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.process.cdist" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 </section>
 <section id="extract">
