@@ -93,7 +93,7 @@
 <h2>cdist<a class="headerlink" href="#cdist" title="Permalink to this headline"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="rapidfuzz.process.cdist">
-<span class="sig-prename descclassname"><span class="pre">rapidfuzz.process.</span></span><span class="sig-name descname"><span class="pre">cdist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">queries</span></em>, <em class="sig-param"><span class="pre">choices</span></em>, <em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">scorer=&lt;cyfunction</span> <span class="pre">ratio&gt;</span></em>, <em class="sig-param"><span class="pre">processor=None</span></em>, <em class="sig-param"><span class="pre">score_cutoff=None</span></em>, <em class="sig-param"><span class="pre">dtype=None</span></em>, <em class="sig-param"><span class="pre">**kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.process.cdist" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.process.</span></span><span class="sig-name descname"><span class="pre">cdist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">queries</span></em>, <em class="sig-param"><span class="pre">choices</span></em>, <em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">scorer=&lt;cyfunction</span> <span class="pre">ratio&gt;</span></em>, <em class="sig-param"><span class="pre">processor=None</span></em>, <em class="sig-param"><span class="pre">score_cutoff=None</span></em>, <em class="sig-param"><span class="pre">dtype=None</span></em>, <em class="sig-param"><span class="pre">workers=1</span></em>, <em class="sig-param"><span class="pre">**kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.process.cdist" title="Permalink to this definition"></a></dt>
 <dd><p>Compute distance/similarity between each pair of the two collections of inputs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -118,6 +118,10 @@ dtypes are supported:
 - similarity: np.uint8, np.float32, np.float64
 - distance: np.int8, np.int16, np.int32, np.int64
 If not given, then the type will be np.uint8 for similarities and np.int32 for distances.</p></li>
+<li><p><strong>workers</strong> (<em>int</em><em>, </em><em>optional</em>) – The calculation is subdivided into workers sections and evaluated in parallel.
+Supply -1 to use all available CPU cores.
+This argument is only available for scorers which are part of rapidfuzz. For custom
+scorers this has not effect.</p></li>
 <li><p><strong>**kwargs</strong> (<em>Any</em><em>, </em><em>optional</em>) – any other named parameters are passed to the scorer. This can be used to pass
 e.g. weights to string_metric.levenshtein</p></li>
 </ul>
