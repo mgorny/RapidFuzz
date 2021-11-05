@@ -106,8 +106,7 @@ the query and each choice. This can be any of the scorers included in RapidFuzz
 Custom functions are not supported so far!
 fuzz.ratio is used by default.</p></li>
 <li><p><strong>processor</strong> (<em>Callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
-comparing them. When processor is True <code class="docutils literal notranslate"><span class="pre">utils.default_process</span></code>
-is used. Default is None, which deactivates this behaviour.</p></li>
+comparing them. Default is None, which deactivates this behaviour.</p></li>
 <li><p><strong>score_cutoff</strong> (<em>Any</em><em>, </em><em>optional</em>) – Optional argument for a score threshold. When an edit distance is used this represents the maximum
 edit distance and matches with a <cite>distance &lt;= score_cutoff</cite> are inserted as -1. When a
 normalized edit distance is used this represents the minimal similarity
