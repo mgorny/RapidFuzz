@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>fuzz module &mdash; RapidFuzz 1.8.2 documentation</title>
+  <title>fuzz module &mdash; RapidFuzz 1.8.3 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -204,7 +204,7 @@ only finds one of the best alignments and not necessarily the optimal one.</p>
 <h2>token_set_ratio<a class="headerlink" href="#token-set-ratio" title="Permalink to this headline"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="rapidfuzz.fuzz.token_set_ratio">
-<span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">token_set_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">s1</span></em>, <em class="sig-param"><span class="pre">s2</span></em>, <em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">processor=&lt;cyfunction</span> <span class="pre">default_process&gt;</span></em>, <em class="sig-param"><span class="pre">score_cutoff=None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.token_set_ratio" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">token_set_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor=&lt;cyfunction</span> <span class="pre">default_process&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.token_set_ratio" title="Permalink to this definition"></a></dt>
 <dd><p>Compares the words in the strings based on unique and common words between them
 using fuzz.ratio</p>
 <dl class="field-list simple">
@@ -241,7 +241,7 @@ which deactivates this behaviour.</p></li>
 <h2>partial_token_set_ratio<a class="headerlink" href="#partial-token-set-ratio" title="Permalink to this headline"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="rapidfuzz.fuzz.partial_token_set_ratio">
-<span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">partial_token_set_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">s1</span></em>, <em class="sig-param"><span class="pre">s2</span></em>, <em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">processor=&lt;cyfunction</span> <span class="pre">default_process&gt;</span></em>, <em class="sig-param"><span class="pre">score_cutoff=None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.partial_token_set_ratio" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">partial_token_set_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor=&lt;cyfunction</span> <span class="pre">default_process&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.partial_token_set_ratio" title="Permalink to this definition"></a></dt>
 <dd><p>Compares the words in the strings based on unique and common words between them
 using fuzz.partial_ratio</p>
 <dl class="field-list simple">
@@ -271,7 +271,7 @@ which deactivates this behaviour.</p></li>
 <h2>token_sort_ratio<a class="headerlink" href="#token-sort-ratio" title="Permalink to this headline"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="rapidfuzz.fuzz.token_sort_ratio">
-<span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">token_sort_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">s1</span></em>, <em class="sig-param"><span class="pre">s2</span></em>, <em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">processor=&lt;cyfunction</span> <span class="pre">default_process&gt;</span></em>, <em class="sig-param"><span class="pre">score_cutoff=None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.token_sort_ratio" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">token_sort_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor=&lt;cyfunction</span> <span class="pre">default_process&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.token_sort_ratio" title="Permalink to this definition"></a></dt>
 <dd><p>Sorts the words in the strings and calculates the fuzz.ratio between them</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -305,7 +305,7 @@ which deactivates this behaviour.</p></li>
 <h2>partial_token_sort_ratio<a class="headerlink" href="#partial-token-sort-ratio" title="Permalink to this headline"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="rapidfuzz.fuzz.partial_token_sort_ratio">
-<span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">partial_token_sort_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">s1</span></em>, <em class="sig-param"><span class="pre">s2</span></em>, <em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">processor=&lt;cyfunction</span> <span class="pre">default_process&gt;</span></em>, <em class="sig-param"><span class="pre">score_cutoff=None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.partial_token_sort_ratio" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">partial_token_sort_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor=&lt;cyfunction</span> <span class="pre">default_process&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.partial_token_sort_ratio" title="Permalink to this definition"></a></dt>
 <dd><p>sorts the words in the strings and calculates the fuzz.partial_ratio between them</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -334,7 +334,7 @@ which deactivates this behaviour.</p></li>
 <h2>token_ratio<a class="headerlink" href="#token-ratio" title="Permalink to this headline"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="rapidfuzz.fuzz.token_ratio">
-<span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">token_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">s1</span></em>, <em class="sig-param"><span class="pre">s2</span></em>, <em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">processor=&lt;cyfunction</span> <span class="pre">default_process&gt;</span></em>, <em class="sig-param"><span class="pre">score_cutoff=None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.token_ratio" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">token_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor=&lt;cyfunction</span> <span class="pre">default_process&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.token_ratio" title="Permalink to this definition"></a></dt>
 <dd><p>Helper method that returns the maximum of fuzz.token_set_ratio and fuzz.token_sort_ratio
 (faster than manually executing the two functions)</p>
 <dl class="field-list simple">
@@ -364,7 +364,7 @@ which deactivates this behaviour.</p></li>
 <h2>partial_token_ratio<a class="headerlink" href="#partial-token-ratio" title="Permalink to this headline"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="rapidfuzz.fuzz.partial_token_ratio">
-<span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">partial_token_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">s1</span></em>, <em class="sig-param"><span class="pre">s2</span></em>, <em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">processor=&lt;cyfunction</span> <span class="pre">default_process&gt;</span></em>, <em class="sig-param"><span class="pre">score_cutoff=None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.partial_token_ratio" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">partial_token_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor=&lt;cyfunction</span> <span class="pre">default_process&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.partial_token_ratio" title="Permalink to this definition"></a></dt>
 <dd><p>Helper method that returns the maximum of fuzz.partial_token_set_ratio and
 fuzz.partial_token_sort_ratio (faster than manually executing the two functions)</p>
 <dl class="field-list simple">
@@ -394,7 +394,7 @@ which deactivates this behaviour.</p></li>
 <h2>WRatio<a class="headerlink" href="#wratio" title="Permalink to this headline"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="rapidfuzz.fuzz.WRatio">
-<span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">WRatio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">s1</span></em>, <em class="sig-param"><span class="pre">s2</span></em>, <em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">processor=&lt;cyfunction</span> <span class="pre">default_process&gt;</span></em>, <em class="sig-param"><span class="pre">score_cutoff=None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.WRatio" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">WRatio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor=&lt;cyfunction</span> <span class="pre">default_process&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.WRatio" title="Permalink to this definition"></a></dt>
 <dd><p>Calculates a weighted ratio based on the other ratio algorithms</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -423,7 +423,7 @@ which deactivates this behaviour.</p></li>
 <h2>QRatio<a class="headerlink" href="#qratio" title="Permalink to this headline"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="rapidfuzz.fuzz.QRatio">
-<span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">QRatio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">s1</span></em>, <em class="sig-param"><span class="pre">s2</span></em>, <em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">processor=&lt;cyfunction</span> <span class="pre">default_process&gt;</span></em>, <em class="sig-param"><span class="pre">score_cutoff=None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.QRatio" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">QRatio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor=&lt;cyfunction</span> <span class="pre">default_process&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.QRatio" title="Permalink to this definition"></a></dt>
 <dd><p>Calculates a quick ratio between two strings using fuzz.ratio.
 The only difference to fuzz.ratio is, that this preprocesses
 the strings by default.</p>
