@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>string_metric module &mdash; RapidFuzz 1.9.1 documentation</title>
+  <title>string_metric module &mdash; RapidFuzz 2.0.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -112,7 +112,7 @@ which gives all three operations a weight of 1.</p></li>
 comparing them. Default is None, which deactivates this behaviour.</p></li>
 <li><p><strong>max</strong> (<em>int</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – Maximum distance between s1 and s2, that is
 considered as a result. If the distance is bigger than max,
--1 is returned instead. Default is None, which deactivates
+max + 1 is returned instead. Default is None, which deactivates
 this behaviour.</p></li>
 </ul>
 </dd>
@@ -238,7 +238,7 @@ Proc. 15th Australasian Workshop on Combinatorial Algorithms (AWOCA 2004).</p>
 <p>Setting a maximum distance allows the implementation to select
 a more efficient implementation:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">levenshtein</span><span class="p">(</span><span class="s2">&quot;lewenstein&quot;</span><span class="p">,</span> <span class="s2">&quot;levenshtein&quot;</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="go">-1</span>
+<span class="go">2</span>
 </pre></div>
 </div>
 <p>It is possible to select different weights by passing a <cite>weight</cite>
@@ -352,7 +352,7 @@ amount of substitutions required to transform s1 into s2.</p>
 comparing them. Default is None, which deactivates this behaviour.</p></li>
 <li><p><strong>max</strong> (<em>int</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – Maximum distance between s1 and s2, that is
 considered as a result. If the distance is bigger than max,
--1 is returned instead. Default is None, which deactivates
+max + 1 is returned instead. Default is None, which deactivates
 this behaviour.</p></li>
 </ul>
 </dd>
