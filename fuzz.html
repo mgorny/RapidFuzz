@@ -100,40 +100,7 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="rapidfuzz.fuzz.ratio">
 <span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.ratio" title="Permalink to this definition"></a></dt>
-<dd><p>Calculates the normalized InDel distance.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>s1</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – First string to compare.</p></li>
-<li><p><strong>s2</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – Second string to compare.</p></li>
-<li><p><strong>processor</strong> (<em>callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
-comparing them. Default is None, which deactivates this behaviour.</p></li>
-<li><p><strong>score_cutoff</strong> (<em>float</em><em>, </em><em>optional</em>) – Optional argument for a score threshold as a float between 0 and 100.
-For ratio &lt; score_cutoff 0 is returned instead. Default is 0,
-which deactivates this behaviour.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>similarity</strong> – similarity between s1 and s2 as a float between 0 and 100</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><a class="reference internal" href="string_metric.html#rapidfuzz.string_metric.normalized_levenshtein" title="rapidfuzz.string_metric.normalized_levenshtein"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rapidfuzz.string_metric.normalized_levenshtein</span></code></a></dt><dd><p>Normalized levenshtein distance</p>
-</dd>
-</dl>
-</div>
-<p class="rubric">Notes</p>
-<img alt="_images/ratio.svg" src="_images/ratio.svg" /><p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fuzz</span><span class="o">.</span><span class="n">ratio</span><span class="p">(</span><span class="s2">&quot;this is a test&quot;</span><span class="p">,</span> <span class="s2">&quot;this is a test!&quot;</span><span class="p">)</span>
-<span class="go">96.55171966552734</span>
-</pre></div>
-</div>
-</dd></dl>
+<dd></dd></dl>
 
 </section>
 <section id="partial-ratio">
@@ -141,63 +108,7 @@ which deactivates this behaviour.</p></li>
 <dl class="py function">
 <dt class="sig sig-object py" id="rapidfuzz.fuzz.partial_ratio">
 <span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">partial_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.partial_ratio" title="Permalink to this definition"></a></dt>
-<dd><p>Searches for the optimal alignment of the shorter string in the
-longer string and returns the fuzz.ratio for this alignment.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>s1</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – First string to compare.</p></li>
-<li><p><strong>s2</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – Second string to compare.</p></li>
-<li><p><strong>processor</strong> (<em>callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
-comparing them. Default is None, which deactivates this behaviour.</p></li>
-<li><p><strong>score_cutoff</strong> (<em>float</em><em>, </em><em>optional</em>) – Optional argument for a score threshold as a float between 0 and 100.
-For ratio &lt; score_cutoff 0 is returned instead. Default is 0,
-which deactivates this behaviour.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>similarity</strong> – similarity between s1 and s2 as a float between 0 and 100</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Depending on the length of the needle (shorter string) different
-implementations are used to improve the performance.</p>
-<dl class="simple">
-<dt>short needle (length ≤ 64):</dt><dd><p>When using a short needle length the fuzz.ratio is calculated for all
-alignments that could result in an optimal alignment. It is
-guaranteed to find the optimal alignment. For short needles this is very
-fast, since for them fuzz.ratio runs in <code class="docutils literal notranslate"><span class="pre">O(N)</span></code> time. This results in a worst
-case performance of <code class="docutils literal notranslate"><span class="pre">O(NM)</span></code>.</p>
-</dd>
-</dl>
-<img alt="_images/partial_ratio_short_needle.svg" src="_images/partial_ratio_short_needle.svg" /><dl>
-<dt>long needle (length &gt; 64):</dt><dd><p>For long needles a similar implementation to FuzzyWuzzy is used.
-This implementation only considers alignments which start at one
-of the longest common substrings. This results in a worst case performance
-of <code class="docutils literal notranslate"><span class="pre">O(N[N/64]M)</span></code>. However usually most of the alignments can be skipped.
-The following Python code shows the concept:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">blocks</span> <span class="o">=</span> <span class="n">SequenceMatcher</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">needle</span><span class="p">,</span> <span class="n">longer</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">get_matching_blocks</span><span class="p">()</span>
-<span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="n">blocks</span><span class="p">:</span>
-    <span class="n">long_start</span> <span class="o">=</span> <span class="n">block</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">block</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="p">(</span><span class="n">block</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">block</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
-    <span class="n">long_end</span> <span class="o">=</span> <span class="n">long_start</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">shorter</span><span class="p">)</span>
-    <span class="n">long_substr</span> <span class="o">=</span> <span class="n">longer</span><span class="p">[</span><span class="n">long_start</span><span class="p">:</span><span class="n">long_end</span><span class="p">]</span>
-    <span class="n">score</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">fuzz</span><span class="o">.</span><span class="n">ratio</span><span class="p">(</span><span class="n">needle</span><span class="p">,</span> <span class="n">long_substr</span><span class="p">))</span>
-</pre></div>
-</div>
-<p>This is a lot faster than checking all possible alignments. However it
-only finds one of the best alignments and not necessarily the optimal one.</p>
-</dd>
-</dl>
-<img alt="_images/partial_ratio_long_needle.svg" src="_images/partial_ratio_long_needle.svg" /><p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fuzz</span><span class="o">.</span><span class="n">partial_ratio</span><span class="p">(</span><span class="s2">&quot;this is a test&quot;</span><span class="p">,</span> <span class="s2">&quot;this is a test!&quot;</span><span class="p">)</span>
-<span class="go">100.0</span>
-</pre></div>
-</div>
-</dd></dl>
+<dd></dd></dl>
 
 </section>
 <section id="token-set-ratio">
@@ -205,36 +116,7 @@ only finds one of the best alignments and not necessarily the optimal one.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="rapidfuzz.fuzz.token_set_ratio">
 <span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">token_set_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor=&lt;cyfunction</span> <span class="pre">default_process&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.token_set_ratio" title="Permalink to this definition"></a></dt>
-<dd><p>Compares the words in the strings based on unique and common words between them
-using fuzz.ratio</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>s1</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – First string to compare.</p></li>
-<li><p><strong>s2</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – Second string to compare.</p></li>
-<li><p><strong>processor</strong> (<em>callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
-comparing them. Default is <code class="docutils literal notranslate"><span class="pre">utils.default_process</span></code>.</p></li>
-<li><p><strong>score_cutoff</strong> (<em>float</em><em>, </em><em>optional</em>) – Optional argument for a score threshold as a float between 0 and 100.
-For ratio &lt; score_cutoff 0 is returned instead. Default is 0,
-which deactivates this behaviour.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>similarity</strong> – similarity between s1 and s2 as a float between 0 and 100</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<img alt="_images/token_set_ratio.svg" src="_images/token_set_ratio.svg" /><p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fuzz</span><span class="o">.</span><span class="n">token_sort_ratio</span><span class="p">(</span><span class="s2">&quot;fuzzy was a bear&quot;</span><span class="p">,</span> <span class="s2">&quot;fuzzy fuzzy was a bear&quot;</span><span class="p">)</span>
-<span class="go">83.8709716796875</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fuzz</span><span class="o">.</span><span class="n">token_set_ratio</span><span class="p">(</span><span class="s2">&quot;fuzzy was a bear&quot;</span><span class="p">,</span> <span class="s2">&quot;fuzzy fuzzy was a bear&quot;</span><span class="p">)</span>
-<span class="go">100.0</span>
-</pre></div>
-</div>
-</dd></dl>
+<dd></dd></dl>
 
 </section>
 <section id="partial-token-set-ratio">
@@ -242,29 +124,7 @@ which deactivates this behaviour.</p></li>
 <dl class="py function">
 <dt class="sig sig-object py" id="rapidfuzz.fuzz.partial_token_set_ratio">
 <span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">partial_token_set_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor=&lt;cyfunction</span> <span class="pre">default_process&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.partial_token_set_ratio" title="Permalink to this definition"></a></dt>
-<dd><p>Compares the words in the strings based on unique and common words between them
-using fuzz.partial_ratio</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>s1</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – First string to compare.</p></li>
-<li><p><strong>s2</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – Second string to compare.</p></li>
-<li><p><strong>processor</strong> (<em>callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
-comparing them. Default is <code class="docutils literal notranslate"><span class="pre">utils.default_process</span></code>.</p></li>
-<li><p><strong>score_cutoff</strong> (<em>float</em><em>, </em><em>optional</em>) – Optional argument for a score threshold as a float between 0 and 100.
-For ratio &lt; score_cutoff 0 is returned instead. Default is 0,
-which deactivates this behaviour.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>similarity</strong> – similarity between s1 and s2 as a float between 0 and 100</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<img alt="_images/partial_token_set_ratio.svg" src="_images/partial_token_set_ratio.svg" /></dd></dl>
+<dd></dd></dl>
 
 </section>
 <section id="token-sort-ratio">
@@ -272,33 +132,7 @@ which deactivates this behaviour.</p></li>
 <dl class="py function">
 <dt class="sig sig-object py" id="rapidfuzz.fuzz.token_sort_ratio">
 <span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">token_sort_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor=&lt;cyfunction</span> <span class="pre">default_process&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.token_sort_ratio" title="Permalink to this definition"></a></dt>
-<dd><p>Sorts the words in the strings and calculates the fuzz.ratio between them</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>s1</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – First string to compare.</p></li>
-<li><p><strong>s2</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – Second string to compare.</p></li>
-<li><p><strong>processor</strong> (<em>callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
-comparing them. Default is <code class="docutils literal notranslate"><span class="pre">utils.default_process</span></code>.</p></li>
-<li><p><strong>score_cutoff</strong> (<em>float</em><em>, </em><em>optional</em>) – Optional argument for a score threshold as a float between 0 and 100.
-For ratio &lt; score_cutoff 0 is returned instead. Default is 0,
-which deactivates this behaviour.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>similarity</strong> – similarity between s1 and s2 as a float between 0 and 100</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<img alt="_images/token_sort_ratio.svg" src="_images/token_sort_ratio.svg" /><p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fuzz</span><span class="o">.</span><span class="n">token_sort_ratio</span><span class="p">(</span><span class="s2">&quot;fuzzy wuzzy was a bear&quot;</span><span class="p">,</span> <span class="s2">&quot;wuzzy fuzzy was a bear&quot;</span><span class="p">)</span>
-<span class="go">100.0</span>
-</pre></div>
-</div>
-</dd></dl>
+<dd></dd></dl>
 
 </section>
 <section id="partial-token-sort-ratio">
@@ -306,28 +140,7 @@ which deactivates this behaviour.</p></li>
 <dl class="py function">
 <dt class="sig sig-object py" id="rapidfuzz.fuzz.partial_token_sort_ratio">
 <span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">partial_token_sort_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor=&lt;cyfunction</span> <span class="pre">default_process&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.partial_token_sort_ratio" title="Permalink to this definition"></a></dt>
-<dd><p>sorts the words in the strings and calculates the fuzz.partial_ratio between them</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>s1</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – First string to compare.</p></li>
-<li><p><strong>s2</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – Second string to compare.</p></li>
-<li><p><strong>processor</strong> (<em>callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
-comparing them. Default is <code class="docutils literal notranslate"><span class="pre">utils.default_process</span></code>.</p></li>
-<li><p><strong>score_cutoff</strong> (<em>float</em><em>, </em><em>optional</em>) – Optional argument for a score threshold as a float between 0 and 100.
-For ratio &lt; score_cutoff 0 is returned instead. Default is 0,
-which deactivates this behaviour.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>similarity</strong> – similarity between s1 and s2 as a float between 0 and 100</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<img alt="_images/partial_token_sort_ratio.svg" src="_images/partial_token_sort_ratio.svg" /></dd></dl>
+<dd></dd></dl>
 
 </section>
 <section id="token-ratio">
@@ -335,29 +148,7 @@ which deactivates this behaviour.</p></li>
 <dl class="py function">
 <dt class="sig sig-object py" id="rapidfuzz.fuzz.token_ratio">
 <span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">token_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor=&lt;cyfunction</span> <span class="pre">default_process&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.token_ratio" title="Permalink to this definition"></a></dt>
-<dd><p>Helper method that returns the maximum of fuzz.token_set_ratio and fuzz.token_sort_ratio
-(faster than manually executing the two functions)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>s1</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – First string to compare.</p></li>
-<li><p><strong>s2</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – Second string to compare.</p></li>
-<li><p><strong>processor</strong> (<em>callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
-comparing them. Default is <code class="docutils literal notranslate"><span class="pre">utils.default_process</span></code>.</p></li>
-<li><p><strong>score_cutoff</strong> (<em>float</em><em>, </em><em>optional</em>) – Optional argument for a score threshold as a float between 0 and 100.
-For ratio &lt; score_cutoff 0 is returned instead. Default is 0,
-which deactivates this behaviour.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>similarity</strong> – similarity between s1 and s2 as a float between 0 and 100</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<img alt="_images/token_ratio.svg" src="_images/token_ratio.svg" /></dd></dl>
+<dd></dd></dl>
 
 </section>
 <section id="partial-token-ratio">
@@ -365,29 +156,7 @@ which deactivates this behaviour.</p></li>
 <dl class="py function">
 <dt class="sig sig-object py" id="rapidfuzz.fuzz.partial_token_ratio">
 <span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">partial_token_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor=&lt;cyfunction</span> <span class="pre">default_process&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.partial_token_ratio" title="Permalink to this definition"></a></dt>
-<dd><p>Helper method that returns the maximum of fuzz.partial_token_set_ratio and
-fuzz.partial_token_sort_ratio (faster than manually executing the two functions)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>s1</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – First string to compare.</p></li>
-<li><p><strong>s2</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – Second string to compare.</p></li>
-<li><p><strong>processor</strong> (<em>callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
-comparing them. Default is <code class="docutils literal notranslate"><span class="pre">utils.default_process</span></code>.</p></li>
-<li><p><strong>score_cutoff</strong> (<em>float</em><em>, </em><em>optional</em>) – Optional argument for a score threshold as a float between 0 and 100.
-For ratio &lt; score_cutoff 0 is returned instead. Default is 0,
-which deactivates this behaviour.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>similarity</strong> – similarity between s1 and s2 as a float between 0 and 100</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<img alt="_images/partial_token_ratio.svg" src="_images/partial_token_ratio.svg" /></dd></dl>
+<dd></dd></dl>
 
 </section>
 <section id="wratio">
@@ -395,28 +164,7 @@ which deactivates this behaviour.</p></li>
 <dl class="py function">
 <dt class="sig sig-object py" id="rapidfuzz.fuzz.WRatio">
 <span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">WRatio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor=&lt;cyfunction</span> <span class="pre">default_process&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.WRatio" title="Permalink to this definition"></a></dt>
-<dd><p>Calculates a weighted ratio based on the other ratio algorithms</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>s1</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – First string to compare.</p></li>
-<li><p><strong>s2</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – Second string to compare.</p></li>
-<li><p><strong>processor</strong> (<em>callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
-comparing them. Default is <code class="docutils literal notranslate"><span class="pre">utils.default_process</span></code>.</p></li>
-<li><p><strong>score_cutoff</strong> (<em>float</em><em>, </em><em>optional</em>) – Optional argument for a score threshold as a float between 0 and 100.
-For ratio &lt; score_cutoff 0 is returned instead. Default is 0,
-which deactivates this behaviour.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>similarity</strong> – similarity between s1 and s2 as a float between 0 and 100</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<img alt="_images/WRatio.svg" src="_images/WRatio.svg" /></dd></dl>
+<dd></dd></dl>
 
 </section>
 <section id="qratio">
@@ -424,34 +172,7 @@ which deactivates this behaviour.</p></li>
 <dl class="py function">
 <dt class="sig sig-object py" id="rapidfuzz.fuzz.QRatio">
 <span class="sig-prename descclassname"><span class="pre">rapidfuzz.fuzz.</span></span><span class="sig-name descname"><span class="pre">QRatio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor=&lt;cyfunction</span> <span class="pre">default_process&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.fuzz.QRatio" title="Permalink to this definition"></a></dt>
-<dd><p>Calculates a quick ratio between two strings using fuzz.ratio.
-The only difference to fuzz.ratio is, that this preprocesses
-the strings by default.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>s1</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – First string to compare.</p></li>
-<li><p><strong>s2</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – Second string to compare.</p></li>
-<li><p><strong>processor</strong> (<em>callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
-comparing them. Default is <code class="docutils literal notranslate"><span class="pre">utils.default_process</span></code>.</p></li>
-<li><p><strong>score_cutoff</strong> (<em>float</em><em>, </em><em>optional</em>) – Optional argument for a score threshold as a float between 0 and 100.
-For ratio &lt; score_cutoff 0 is returned instead. Default is 0,
-which deactivates this behaviour.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>similarity</strong> – similarity between s1 and s2 as a float between 0 and 100</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fuzz</span><span class="o">.</span><span class="n">QRatio</span><span class="p">(</span><span class="s2">&quot;this is a test&quot;</span><span class="p">,</span> <span class="s2">&quot;THIS is a test!&quot;</span><span class="p">)</span>
-<span class="go">100.0</span>
-</pre></div>
-</div>
-</dd></dl>
+<dd></dd></dl>
 
 </section>
 </section>
