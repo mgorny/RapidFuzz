@@ -93,32 +93,287 @@
 <h2>cdist<a class="headerlink" href="#cdist" title="Permalink to this headline"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="rapidfuzz.process.cdist">
-<span class="sig-prename descclassname"><span class="pre">rapidfuzz.process.</span></span><span class="sig-name descname"><span class="pre">cdist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">queries</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">choices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scorer=&lt;cyfunction</span> <span class="pre">ratio&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workers=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.process.cdist" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.process.</span></span><span class="sig-name descname"><span class="pre">cdist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">queries</span></em>, <em class="sig-param"><span class="pre">choices</span></em>, <em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">scorer=&lt;cyfunction</span> <span class="pre">ratio&gt;</span></em>, <em class="sig-param"><span class="pre">processor=None</span></em>, <em class="sig-param"><span class="pre">score_cutoff=None</span></em>, <em class="sig-param"><span class="pre">dtype=None</span></em>, <em class="sig-param"><span class="pre">workers=1</span></em>, <em class="sig-param"><span class="pre">**kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.process.cdist" title="Permalink to this definition"></a></dt>
+<dd><p>Compute distance/similarity between each pair of the two collections of inputs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>queries</strong> (<em>Collection</em><em>[</em><em>Sequence</em><em>[</em><em>Hashable</em><em>]</em><em>]</em>) – list of all strings the queries</p></li>
+<li><p><strong>choices</strong> (<em>Collection</em><em>[</em><em>Sequence</em><em>[</em><em>Hashable</em><em>]</em><em>]</em>) – list of all strings the query should be compared</p></li>
+<li><p><strong>scorer</strong> (<em>Callable</em><em>, </em><em>optional</em>) – Optional callable that is used to calculate the matching score between
+the query and each choice. This can be any of the scorers included in RapidFuzz
+(both scorers that calculate the edit distance or the normalized edit distance).
+Custom functions are not supported so far!
+fuzz.ratio is used by default.</p></li>
+<li><p><strong>processor</strong> (<em>Callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
+comparing them. When processor is True <code class="docutils literal notranslate"><span class="pre">utils.default_process</span></code>
+is used. Default is None, which deactivates this behaviour.</p></li>
+<li><p><strong>score_cutoff</strong> (<em>Any</em><em>, </em><em>optional</em>) – Optional argument for a score threshold. When an edit distance is used this represents the maximum
+edit distance and matches with a <cite>distance &lt;= score_cutoff</cite> are inserted as -1. When a
+normalized edit distance is used this represents the minimal similarity
+and matches with a <cite>similarity &gt;= score_cutoff</cite> are inserted as 0.
+Default is None, which deactivates this behaviour.</p></li>
+<li><p><strong>dtype</strong> (<em>data-type</em><em>, </em><em>optional</em>) – The desired data-type for the result array. Depending on the scorer type the following
+dtypes are supported:
+- similarity: np.uint8, np.float32, np.float64
+- distance: np.int8, np.int16, np.int32, np.int64
+If not given, then the type will be np.uint8 for similarities and np.int32 for distances.</p></li>
+<li><p><strong>workers</strong> (<em>int</em><em>, </em><em>optional</em>) – The calculation is subdivided into workers sections and evaluated in parallel.
+Supply -1 to use all available CPU cores.
+This argument is only available for scorers which are part of rapidfuzz. For custom
+scorers this has not effect.</p></li>
+<li><p><strong>**kwargs</strong> (<em>Any</em><em>, </em><em>optional</em>) – any other named parameters are passed to the scorer. This can be used to pass
+e.g. weights to string_metric.levenshtein</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns a matrix of dtype with the distance/similarity between each pair
+of the two collections of inputs.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 <section id="extract">
 <h2>extract<a class="headerlink" href="#extract" title="Permalink to this headline"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="rapidfuzz.process.extract">
-<span class="sig-prename descclassname"><span class="pre">rapidfuzz.process.</span></span><span class="sig-name descname"><span class="pre">extract</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">choices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scorer=&lt;cyfunction</span> <span class="pre">WRatio&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor=&lt;cyfunction</span> <span class="pre">default_process&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit=5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.process.extract" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.process.</span></span><span class="sig-name descname"><span class="pre">extract</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">query</span></em>, <em class="sig-param"><span class="pre">choices</span></em>, <em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">scorer=&lt;cyfunction</span> <span class="pre">WRatio&gt;</span></em>, <em class="sig-param"><span class="pre">processor=&lt;cyfunction</span> <span class="pre">default_process&gt;</span></em>, <em class="sig-param"><span class="pre">limit=5</span></em>, <em class="sig-param"><span class="pre">score_cutoff=None</span></em>, <em class="sig-param"><span class="pre">**kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.process.extract" title="Permalink to this definition"></a></dt>
+<dd><p>Find the best matches in a list of choices. The list is sorted by the similarity.
+When multiple choices have the same similarity, they are sorted by their index</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – string we want to find</p></li>
+<li><p><strong>choices</strong> (<em>Collection</em><em>[</em><em>Sequence</em><em>[</em><em>Hashable</em><em>]</em><em>] </em><em>| </em><em>Mapping</em><em>[</em><em>Sequence</em><em>[</em><em>Hashable</em><em>]</em><em>]</em>) – list of all strings the query should be compared with or dict with a mapping
+{&lt;result&gt;: &lt;string to compare&gt;}</p></li>
+<li><p><strong>scorer</strong> (<em>Callable</em><em>, </em><em>optional</em>) – Optional callable that is used to calculate the matching score between
+the query and each choice. This can be any of the scorers included in RapidFuzz
+(both scorers that calculate the edit distance or the normalized edit distance), or
+a custom function, which returns a normalized edit distance.
+fuzz.WRatio is used by default.</p></li>
+<li><p><strong>processor</strong> (<em>Callable</em><em>, </em><em>optional</em>) – Optional callable that reformats the strings.
+utils.default_process is used by default, which lowercases the strings and trims whitespace</p></li>
+<li><p><strong>limit</strong> (<em>int</em>) – maximum amount of results to return</p></li>
+<li><p><strong>score_cutoff</strong> (<em>Any</em><em>, </em><em>optional</em>) – Optional argument for a score threshold. When an edit distance is used this represents the maximum
+edit distance and matches with a <cite>distance &lt;= score_cutoff</cite> are ignored. When a
+normalized edit distance is used this represents the minimal similarity
+and matches with a <cite>similarity &gt;= score_cutoff</cite> are ignored. For edit distances this defaults to
+-1, while for normalized edit distances this defaults to 0.0, which deactivates this behaviour.</p></li>
+<li><p><strong>**kwargs</strong> (<em>Any</em><em>, </em><em>optional</em>) – any other named parameters are passed to the scorer. This can be used to pass
+e.g. weights to string_metric.levenshtein</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>The return type is always a List of Tuples with 3 elements. However the values stored in the
+tuple depend on the types of the input arguments.</p>
+<ul>
+<li><p>The first element is always the <cite>choice</cite>, which is the value thats compared to the query.</p></li>
+<li><p>The second value represents the similarity calculated by the scorer. This can be:</p>
+<ul class="simple">
+<li><p>An edit distance (distance is 0 for a perfect match and &gt; 0 for non perfect matches).
+In this case only choices which have a <cite>distance &lt;= max</cite> are returned.
+An example of a scorer with this behavior is <cite>string_metric.levenshtein</cite>.</p></li>
+<li><p>A normalized edit distance (similarity is a score between 0 and 100, with 100 being a perfect match).
+In this case only choices which have a <cite>similarity &gt;= score_cutoff</cite> are returned.
+An example of a scorer with this behavior is <cite>string_metric.normalized_levenshtein</cite>.</p></li>
+</ul>
+<p>Note, that for all scorers, which are not provided by RapidFuzz, only normalized edit distances are supported.</p>
+</li>
+<li><p>The third parameter depends on the type of the <cite>choices</cite> argument it is:</p>
+<ul class="simple">
+<li><p>The <cite>index of choice</cite> when choices is a simple iterable like a list</p></li>
+<li><p>The <cite>key of choice</cite> when choices is a mapping like a dict, or a pandas Series</p></li>
+</ul>
+</li>
+</ul>
+<p>The list is sorted by <cite>score_cutoff</cite> or <cite>max</cite> depending on the scorer used. The first element in the list
+has the <cite>highest similarity</cite>/<cite>smallest distance</cite>.</p>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[Tuple[Sequence[Hashable], Any, Any]]</p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 <section id="extract-iter">
 <h2>extract_iter<a class="headerlink" href="#extract-iter" title="Permalink to this headline"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="rapidfuzz.process.extract_iter">
-<span class="sig-prename descclassname"><span class="pre">rapidfuzz.process.</span></span><span class="sig-name descname"><span class="pre">extract_iter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">choices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scorer=&lt;cyfunction</span> <span class="pre">WRatio&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor=&lt;cyfunction</span> <span class="pre">default_process&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.process.extract_iter" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.process.</span></span><span class="sig-name descname"><span class="pre">extract_iter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">query</span></em>, <em class="sig-param"><span class="pre">choices</span></em>, <em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">scorer=&lt;cyfunction</span> <span class="pre">WRatio&gt;</span></em>, <em class="sig-param"><span class="pre">processor=&lt;cyfunction</span> <span class="pre">default_process&gt;</span></em>, <em class="sig-param"><span class="pre">score_cutoff=None</span></em>, <em class="sig-param"><span class="pre">**kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.process.extract_iter" title="Permalink to this definition"></a></dt>
+<dd><p>Find the best match in a list of choices</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – string we want to find</p></li>
+<li><p><strong>choices</strong> (<em>Iterable</em><em>[</em><em>Sequence</em><em>[</em><em>Hashable</em><em>]</em><em>] </em><em>| </em><em>Mapping</em><em>[</em><em>Sequence</em><em>[</em><em>Hashable</em><em>]</em><em>]</em>) – list of all strings the query should be compared with or dict with a mapping
+{&lt;result&gt;: &lt;string to compare&gt;}</p></li>
+<li><p><strong>scorer</strong> (<em>Callable</em><em>, </em><em>optional</em>) – Optional callable that is used to calculate the matching score between
+the query and each choice. This can be any of the scorers included in RapidFuzz
+(both scorers that calculate the edit distance or the normalized edit distance), or
+a custom function, which returns a normalized edit distance.
+fuzz.WRatio is used by default.</p></li>
+<li><p><strong>processor</strong> (<em>Callable</em><em>, </em><em>optional</em>) – Optional callable that reformats the strings.
+utils.default_process is used by default, which lowercases the strings and trims whitespace</p></li>
+<li><p><strong>score_cutoff</strong> (<em>Any</em><em>, </em><em>optional</em>) – Optional argument for a score threshold. When an edit distance is used this represents the maximum
+edit distance and matches with a <cite>distance &lt;= score_cutoff</cite> are ignored. When a
+normalized edit distance is used this represents the minimal similarity
+and matches with a <cite>similarity &gt;= score_cutoff</cite> are ignored. For edit distances this defaults to
+-1, while for normalized edit distances this defaults to 0.0, which deactivates this behaviour.</p></li>
+<li><p><strong>**kwargs</strong> (<em>Any</em><em>, </em><em>optional</em>) – any other named parameters are passed to the scorer. This can be used to pass
+e.g. weights to string_metric.levenshtein</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p><em>Tuple[Sequence[Hashable], Any, Any]</em> – Yields similarity between the query and each choice in form of a Tuple with 3 elements.
+The values stored in the tuple depend on the types of the input arguments.</p>
+<ul>
+<li><p>The first element is always the current <cite>choice</cite>, which is the value thats compared to the query.</p></li>
+<li><p>The second value represents the similarity calculated by the scorer. This can be:</p>
+<ul class="simple">
+<li><p>An edit distance (distance is 0 for a perfect match and &gt; 0 for non perfect matches).
+In this case only choices which have a <cite>distance &lt;= max</cite> are yielded.
+An example of a scorer with this behavior is <cite>string_metric.levenshtein</cite>.</p></li>
+<li><p>A normalized edit distance (similarity is a score between 0 and 100, with 100 being a perfect match).
+In this case only choices which have a <cite>similarity &gt;= score_cutoff</cite> are yielded.
+An example of a scorer with this behavior is <cite>string_metric.normalized_levenshtein</cite>.</p></li>
+</ul>
+<p>Note, that for all scorers, which are not provided by RapidFuzz, only normalized edit distances are supported.</p>
+</li>
+<li><p>The third parameter depends on the type of the <cite>choices</cite> argument it is:</p>
+<ul class="simple">
+<li><p>The <cite>index of choice</cite> when choices is a simple iterable like a list</p></li>
+<li><p>The <cite>key of choice</cite> when choices is a mapping like a dict, or a pandas Series</p></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 <section id="extractone">
 <h2>extractOne<a class="headerlink" href="#extractone" title="Permalink to this headline"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="rapidfuzz.process.extractOne">
-<span class="sig-prename descclassname"><span class="pre">rapidfuzz.process.</span></span><span class="sig-name descname"><span class="pre">extractOne</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">choices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scorer=&lt;cyfunction</span> <span class="pre">WRatio&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor=&lt;cyfunction</span> <span class="pre">default_process&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.process.extractOne" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.process.</span></span><span class="sig-name descname"><span class="pre">extractOne</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">query</span></em>, <em class="sig-param"><span class="pre">choices</span></em>, <em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">scorer=&lt;cyfunction</span> <span class="pre">WRatio&gt;</span></em>, <em class="sig-param"><span class="pre">processor=&lt;cyfunction</span> <span class="pre">default_process&gt;</span></em>, <em class="sig-param"><span class="pre">score_cutoff=None</span></em>, <em class="sig-param"><span class="pre">**kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.process.extractOne" title="Permalink to this definition"></a></dt>
+<dd><p>Find the best match in a list of choices. When multiple elements have the same similarity,
+the first element is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – string we want to find</p></li>
+<li><p><strong>choices</strong> (<em>Iterable</em><em>[</em><em>Sequence</em><em>[</em><em>Hashable</em><em>]</em><em>] </em><em>| </em><em>Mapping</em><em>[</em><em>Sequence</em><em>[</em><em>Hashable</em><em>]</em><em>]</em>) – list of all strings the query should be compared with or dict with a mapping
+{&lt;result&gt;: &lt;string to compare&gt;}</p></li>
+<li><p><strong>scorer</strong> (<em>Callable</em><em>, </em><em>optional</em>) – Optional callable that is used to calculate the matching score between
+the query and each choice. This can be any of the scorers included in RapidFuzz
+(both scorers that calculate the edit distance or the normalized edit distance), or
+a custom function, which returns a normalized edit distance.
+fuzz.WRatio is used by default.</p></li>
+<li><p><strong>processor</strong> (<em>Callable</em><em>, </em><em>optional</em>) – Optional callable that reformats the strings.
+utils.default_process is used by default, which lowercases the strings and trims whitespace</p></li>
+<li><p><strong>score_cutoff</strong> (<em>Any</em><em>, </em><em>optional</em>) – Optional argument for a score threshold. When an edit distance is used this represents the maximum
+edit distance and matches with a <cite>distance &lt;= score_cutoff</cite> are ignored. When a
+normalized edit distance is used this represents the minimal similarity
+and matches with a <cite>similarity &gt;= score_cutoff</cite> are ignored. For edit distances this defaults to
+-1, while for normalized edit distances this defaults to 0.0, which deactivates this behaviour.</p></li>
+<li><p><strong>**kwargs</strong> (<em>Any</em><em>, </em><em>optional</em>) – any other named parameters are passed to the scorer. This can be used to pass
+e.g. weights to string_metric.levenshtein</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul>
+<li><p><em>Tuple[Sequence[Hashable], Any, Any]</em> – Returns the best match in form of a Tuple with 3 elements. The values stored in the
+tuple depend on the types of the input arguments.</p>
+<ul>
+<li><p>The first element is always the <cite>choice</cite>, which is the value thats compared to the query.</p></li>
+<li><p>The second value represents the similarity calculated by the scorer. This can be:</p>
+<ul class="simple">
+<li><p>An edit distance (distance is 0 for a perfect match and &gt; 0 for non perfect matches).
+In this case only choices which have a <cite>distance &lt;= score_cutoff</cite> are returned.
+An example of a scorer with this behavior is <cite>string_metric.levenshtein</cite>.</p></li>
+<li><p>A normalized edit distance (similarity is a score between 0 and 100, with 100 being a perfect match).
+In this case only choices which have a <cite>similarity &gt;= score_cutoff</cite> are returned.
+An example of a scorer with this behavior is <cite>string_metric.normalized_levenshtein</cite>.</p></li>
+</ul>
+<p>Note, that for all scorers, which are not provided by RapidFuzz, only normalized edit distances are supported.</p>
+</li>
+<li><p>The third parameter depends on the type of the <cite>choices</cite> argument it is:</p>
+<ul class="simple">
+<li><p>The <cite>index of choice</cite> when choices is a simple iterable like a list</p></li>
+<li><p>The <cite>key of choice</cite> when choices is a mapping like a dict, or a pandas Series</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>None</em> – When no choice has a <cite>similarity &gt;= score_cutoff</cite>/<cite>distance &lt;= score_cutoff</cite> None is returned</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">rapidfuzz.process</span> <span class="kn">import</span> <span class="n">extractOne</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">rapidfuzz.string_metric</span> <span class="kn">import</span> <span class="n">levenshtein</span><span class="p">,</span> <span class="n">normalized_levenshtein</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">rapidfuzz.fuzz</span> <span class="kn">import</span> <span class="n">ratio</span>
+</pre></div>
+</div>
+<p>extractOne can be used with normalized edit distances.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">extractOne</span><span class="p">(</span><span class="s2">&quot;abcd&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;abce&quot;</span><span class="p">],</span> <span class="n">scorer</span><span class="o">=</span><span class="n">ratio</span><span class="p">)</span>
+<span class="go">(&quot;abcd&quot;, 75.0, 1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">extractOne</span><span class="p">(</span><span class="s2">&quot;abcd&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;abce&quot;</span><span class="p">],</span> <span class="n">scorer</span><span class="o">=</span><span class="n">normalized_levenshtein</span><span class="p">)</span>
+<span class="go">(&quot;abcd&quot;, 75.0, 1)</span>
+</pre></div>
+</div>
+<p>extractOne can be used with edit distances as well.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">extractOne</span><span class="p">(</span><span class="s2">&quot;abcd&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;abce&quot;</span><span class="p">],</span> <span class="n">scorer</span><span class="o">=</span><span class="n">levenshtein</span><span class="p">)</span>
+<span class="go">(&quot;abce&quot;, 1, 0)</span>
+</pre></div>
+</div>
+<p>additional settings of the scorer can be passed as keyword arguments to extractOne</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">extractOne</span><span class="p">(</span><span class="s2">&quot;abcd&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;abce&quot;</span><span class="p">],</span> <span class="n">scorer</span><span class="o">=</span><span class="n">levenshtein</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="go">(&quot;abcde&quot;, 2, 1)</span>
+</pre></div>
+</div>
+<p>when a mapping is used for the choices the key of the choice is returned instead of the List index</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">extractOne</span><span class="p">(</span><span class="s2">&quot;abcd&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;abce&quot;</span><span class="p">},</span> <span class="n">scorer</span><span class="o">=</span><span class="n">ratio</span><span class="p">)</span>
+<span class="go">(&quot;abcd&quot;, 75.0, &quot;key&quot;)</span>
+</pre></div>
+</div>
+<p>By default each string is preprocessed using <cite>utils.default_process</cite>, which lowercases the strings,
+replaces non alphanumeric characters with whitespaces and trims whitespaces from start and end of them.
+This behavior can be changed by passing a custom function, or None/False to disable the behavior. Preprocessing
+can take a significant part of the runtime, so it makes sense to disable it, when it is not required.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">extractOne</span><span class="p">(</span><span class="s2">&quot;abcd&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;abdD&quot;</span><span class="p">],</span> <span class="n">scorer</span><span class="o">=</span><span class="n">ratio</span><span class="p">)</span>
+<span class="go">(&quot;abcD&quot;, 100.0, 0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">extractOne</span><span class="p">(</span><span class="s2">&quot;abcd&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;abdD&quot;</span><span class="p">],</span> <span class="n">scorer</span><span class="o">=</span><span class="n">ratio</span><span class="p">,</span> <span class="n">processor</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="go">(&quot;abcD&quot;, 75.0, 0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">extractOne</span><span class="p">(</span><span class="s2">&quot;abcd&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;abdD&quot;</span><span class="p">],</span> <span class="n">scorer</span><span class="o">=</span><span class="n">ratio</span><span class="p">,</span> <span class="n">processor</span><span class="o">=</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+<span class="go">(&quot;abcD&quot;, 100.0, 0)</span>
+</pre></div>
+</div>
+<p>When only results with a similarity above a certain threshold are relevant, the parameter score_cutoff can be
+used to filter out results with a lower similarity. This threshold is used by some of the scorers to exit early,
+when they are sure, that the similarity is below the threshold.
+For normalized edit distances all results with a similarity below score_cutoff are filtered out</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">extractOne</span><span class="p">(</span><span class="s2">&quot;abcd&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;abce&quot;</span><span class="p">],</span> <span class="n">scorer</span><span class="o">=</span><span class="n">ratio</span><span class="p">)</span>
+<span class="go">(&quot;abce&quot;, 75.0, 0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">extractOne</span><span class="p">(</span><span class="s2">&quot;abcd&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;abce&quot;</span><span class="p">],</span> <span class="n">scorer</span><span class="o">=</span><span class="n">ratio</span><span class="p">,</span> <span class="n">score_cutoff</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+<span class="go">None</span>
+</pre></div>
+</div>
+<p>For edit distances all results with an edit distance above the score_cutoff are filtered out</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">extractOne</span><span class="p">(</span><span class="s2">&quot;abcd&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;abce&quot;</span><span class="p">],</span> <span class="n">scorer</span><span class="o">=</span><span class="n">levenshtein</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="go">(&quot;abce&quot;, 2, 0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">extractOne</span><span class="p">(</span><span class="s2">&quot;abcd&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;abce&quot;</span><span class="p">],</span> <span class="n">scorer</span><span class="o">=</span><span class="n">levenshtein</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">score_cutoff</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">None</span>
+</pre></div>
+</div>
+</dd></dl>
 
 </section>
 </section>
