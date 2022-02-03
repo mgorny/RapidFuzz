@@ -1,6 +1,9 @@
 Indel
 -----
 
+Functions
+^^^^^^^^^
+
 distance
 ~~~~~~~~
 .. autofunction:: rapidfuzz.distance.Indel.distance
