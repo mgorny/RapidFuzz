@@ -235,47 +235,6 @@ this behaviour.</p></li>
 <dd class="field-odd"><p>int</p>
 </dd>
 </dl>
-<p class="rubric">Notes</p>
-<p>The following implementation is used with a worst-case performance of <code class="docutils literal notranslate"><span class="pre">O([N/64]M)</span></code>.</p>
-<ul class="simple">
-<li><p>if max is 0 the similarity can be calculated using a direct comparision,
-since no difference between the strings is allowed.  The time complexity of
-this algorithm is <code class="docutils literal notranslate"><span class="pre">O(N)</span></code>.</p></li>
-<li><p>if max is 1 and the two strings have a similar length, the similarity can be
-calculated using a direct comparision aswell, since a substitution would cause
-a edit distance higher than max. The time complexity of this algorithm
-is <code class="docutils literal notranslate"><span class="pre">O(N)</span></code>.</p></li>
-<li><p>A common prefix/suffix of the two compared strings does not affect
-the Levenshtein distance, so the affix is removed before calculating the
-similarity.</p></li>
-<li><p>If max is ≤ 4 the mbleven algorithm is used. This algorithm
-checks all possible edit operations that are possible under
-the threshold <cite>max</cite>. As a difference to the normal Levenshtein distance this
-algorithm can even be used up to a threshold of 4 here, since the higher weight
-of substitutions decreases the amount of possible edit operations.
-The time complexity of this algorithm is <code class="docutils literal notranslate"><span class="pre">O(N)</span></code>.</p></li>
-<li><p>If the length of the shorter string is ≤ 64 after removing the common affix
-Hyyrös’ lcs algorithm is used, which calculates the Indel distance in
-parallel. The algorithm is described by <a class="footnote-reference brackets" href="#id3" id="id1">5</a> and is extended with support
-for UTF32 in this implementation. The time complexity of this
-algorithm is <code class="docutils literal notranslate"><span class="pre">O(N)</span></code>.</p></li>
-<li><p>If the length of the shorter string is ≥ 64 after removing the common affix
-a blockwise implementation of the Hyyrös’ lcs algorithm is used, which calculates
-the Levenshtein distance in parallel (64 characters at a time).
-The algorithm is described by <a class="footnote-reference brackets" href="#id3" id="id2">5</a>. The time complexity of this
-algorithm is <code class="docutils literal notranslate"><span class="pre">O([N/64]M)</span></code>.</p></li>
-</ul>
-<p>The following image shows a benchmark of the Indel distance in RapidFuzz
-and python-Levenshtein. Similar to the normal Levenshtein distance
-python-Levenshtein uses a implementation with a time complexity of <code class="docutils literal notranslate"><span class="pre">O(NM)</span></code>,
-while RapidFuzz has a time complexity of <code class="docutils literal notranslate"><span class="pre">O([N/64]M)</span></code>.</p>
-<img alt="../../_images/indel_levenshtein.svg" src="../../_images/indel_levenshtein.svg"/><p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id3"><span class="brackets">5</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
-<dd><p>Hyyrö, Heikki. “Bit-Parallel LCS-length Computation Revisited”
-Proc. 15th Australasian Workshop on Combinatorial Algorithms (AWOCA 2004).</p>
-</dd>
-</dl>
 <p class="rubric">Examples</p>
 <p>Find the Indel distance between two strings:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">rapidfuzz.algorithm.edit_based</span> <span class="kn">import</span> <span class="n">Indel</span>
@@ -317,13 +276,6 @@ which deactivates this behaviour.</p></li>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Indel.distance</span></code></dt><dd><p>Indel distance</p>
-</dd>
-</dl>
-</div>
 </dd></dl>
 </section>
 <section id="similarity">
@@ -353,13 +305,6 @@ this behaviour.</p></li>
 <dd class="field-odd"><p>int</p>
 </dd>
 </dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Indel.distance</span></code></dt><dd><p>Indel distance</p>
-</dd>
-</dl>
-</div>
 </dd></dl>
 </section>
 <section id="normalized-similarity">
@@ -388,13 +333,6 @@ which deactivates this behaviour.</p></li>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Indel.normalized_distance</span></code></dt><dd><p>Normalized Indel distance</p>
-</dd>
-</dl>
-</div>
 <p class="rubric">Examples</p>
 <p>Find the normalized Indel similarity between two strings:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">rapidfuzz.algorithm.edit_based</span> <span class="kn">import</span> <span class="n">Indel</span>
@@ -439,10 +377,10 @@ comparing them. Default is None, which deactivates this behaviour.</p></li>
 </dl>
 <p class="rubric">Notes</p>
 <p>The alignment is calculated using an algorithm of Heikki Hyyrö, which is
-described <a class="footnote-reference brackets" href="#id5" id="id4">6</a>. It has a time complexity and memory usage of <code class="docutils literal notranslate"><span class="pre">O([N/64]</span> <span class="pre">*</span> <span class="pre">M)</span></code>.</p>
+described <a class="footnote-reference brackets" href="#id2" id="id1">6</a>. It has a time complexity and memory usage of <code class="docutils literal notranslate"><span class="pre">O([N/64]</span> <span class="pre">*</span> <span class="pre">M)</span></code>.</p>
 <p class="rubric">References</p>
 <dl class="footnote brackets">
-<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id4">6</a></span></dt>
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">6</a></span></dt>
 <dd><p>Hyyrö, Heikki. “A Note on Bit-Parallel Alignment Computation.”
 Stringology (2004).</p>
 </dd>
@@ -483,10 +421,10 @@ comparing them. Default is None, which deactivates this behaviour.</p></li>
 </dl>
 <p class="rubric">Notes</p>
 <p>The alignment is calculated using an algorithm of Heikki Hyyrö, which is
-described <a class="footnote-reference brackets" href="#id7" id="id6">7</a>. It has a time complexity and memory usage of <code class="docutils literal notranslate"><span class="pre">O([N/64]</span> <span class="pre">*</span> <span class="pre">M)</span></code>.</p>
+described <a class="footnote-reference brackets" href="#id4" id="id3">7</a>. It has a time complexity and memory usage of <code class="docutils literal notranslate"><span class="pre">O([N/64]</span> <span class="pre">*</span> <span class="pre">M)</span></code>.</p>
 <p class="rubric">References</p>
 <dl class="footnote brackets">
-<dt class="label" id="id7"><span class="brackets"><a class="fn-backref" href="#id6">7</a></span></dt>
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id3">7</a></span></dt>
 <dd><p>Hyyrö, Heikki. “A Note on Bit-Parallel Alignment Computation.”
 Stringology (2004).</p>
 </dd>
@@ -509,6 +447,51 @@ Stringology (2004).</p>
 </pre></div>
 </div>
 </dd></dl>
+<section id="performance">
+<h3>Performance<a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h3>
+<p>Since the Levenshtein module uses different implementations based on the weights
+used, this leads to different performance characteristics. The following sections
+show the performance for the different possible weights.</p>
+</section>
+</section>
+<section id="id5">
+<h2>Indel<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>The following image shows a benchmark of the Indel distance in RapidFuzz
+and python-Levenshtein. Similar to the normal Levenshtein distance
+python-Levenshtein uses an implementation with a time complexity of <code class="docutils literal notranslate"><span class="pre">O(NM)</span></code>,
+while RapidFuzz has a time complexity of <code class="docutils literal notranslate"><span class="pre">O([N/64]M)</span></code>.</p>
+<img alt="../../_images/indel_levenshtein.svg" class="align-center" src="../../_images/indel_levenshtein.svg"/><section id="implementation-notes">
+<h3>Implementation Notes<a class="headerlink" href="#implementation-notes" title="Permalink to this headline">¶</a></h3>
+<p>The following implementation is used with a worst-case performance of <code class="docutils literal notranslate"><span class="pre">O([N/64]M)</span></code>.</p>
+<ul class="simple">
+<li><p>if max is 0 the similarity can be calculated using a direct comparision,
+since no difference between the strings is allowed.  The time complexity of
+this algorithm is <code class="docutils literal notranslate"><span class="pre">O(N)</span></code>.</p></li>
+<li><p>if max is 1 and the two strings have a similar length, the similarity can be
+calculated using a direct comparision aswell, since a substitution would cause
+a edit distance higher than max. The time complexity of this algorithm
+is <code class="docutils literal notranslate"><span class="pre">O(N)</span></code>.</p></li>
+<li><p>A common prefix/suffix of the two compared strings does not affect
+the Levenshtein distance, so the affix is removed before calculating the
+similarity.</p></li>
+<li><p>If max is ≤ 4 the mbleven algorithm is used. This algorithm
+checks all possible edit operations that are possible under
+the threshold <cite>max</cite>. As a difference to the normal Levenshtein distance this
+algorithm can even be used up to a threshold of 4 here, since the higher weight
+of substitutions decreases the amount of possible edit operations.
+The time complexity of this algorithm is <code class="docutils literal notranslate"><span class="pre">O(N)</span></code>.</p></li>
+<li><p>If the length of the shorter string is ≤ 64 after removing the common affix
+Hyyrös’ lcs algorithm is used, which calculates the Indel distance in
+parallel. The algorithm is described by <span id="id6">Hyyro [<a class="reference internal" href="../../References.html#id4" title="Heikki Hyyro. Bit-parallel lcs-length computation revisited. Proc. 15th Australasian Workshop on Combinatorial Algorithms (AWOCA 2004), pages, 08 2004.">Hyy04</a>]</span> and is extended with support
+for UTF32 in this implementation. The time complexity of this
+algorithm is <code class="docutils literal notranslate"><span class="pre">O(N)</span></code>.</p></li>
+<li><p>If the length of the shorter string is ≥ 64 after removing the common affix
+a blockwise implementation of the Hyyrös’ lcs algorithm is used, which calculates
+the Levenshtein distance in parallel (64 characters at a time).
+The algorithm is described by <span id="id7">Hyyro [<a class="reference internal" href="../../References.html#id4" title="Heikki Hyyro. Bit-parallel lcs-length computation revisited. Proc. 15th Australasian Workshop on Combinatorial Algorithms (AWOCA 2004), pages, 08 2004.">Hyy04</a>]</span>. The time complexity of this
+algorithm is <code class="docutils literal notranslate"><span class="pre">O([N/64]M)</span></code>.</p></li>
+</ul>
+</section>
 </section>
 </section>
 
@@ -569,7 +552,14 @@ Stringology (2004).</p>
 <li><a class="reference internal" href="#similarity">similarity</a></li>
 <li><a class="reference internal" href="#normalized-similarity">normalized_similarity</a></li>
 <li><a class="reference internal" href="#editops">editops</a></li>
-<li><a class="reference internal" href="#opcodes">opcodes</a></li>
+<li><a class="reference internal" href="#opcodes">opcodes</a><ul>
+<li><a class="reference internal" href="#performance">Performance</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">Indel</a><ul>
+<li><a class="reference internal" href="#implementation-notes">Implementation Notes</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
