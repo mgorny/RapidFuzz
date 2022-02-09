@@ -207,6 +207,38 @@
         <article role="main">
           <section id="distance">
 <h1>distance<a class="headerlink" href="#distance" title="Permalink to this headline">¶</a></h1>
+<section id="editop">
+<h2>Editop<a class="headerlink" href="#editop" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="rapidfuzz.distance.Editop">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rapidfuzz.distance.</span></span><span class="sig-name descname"><span class="pre">Editop</span></span><a class="headerlink" href="#rapidfuzz.distance.Editop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tuple like object describing an edit operation.
+It is in the form (tag, src_pos, dest_pos)</p>
+<p>The tags are strings, with these meanings:</p>
+<div class="table-wrapper"><table class="docutils align-default">
+<colgroup>
+<col style="width: 18%"/>
+<col style="width: 82%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>tag</p></th>
+<th class="head"><p>explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>‘replace’</p></td>
+<td><p>src[src_pos] should be replaced by dest[dest_pos]</p></td>
+</tr>
+<tr class="row-odd"><td><p>‘delete’</p></td>
+<td><p>src[src_pos] should be deleted</p></td>
+</tr>
+<tr class="row-even"><td><p>‘insert’</p></td>
+<td><p>dest[dest_pos] should be inserted at src[src_pos]</p></td>
+</tr>
+</tbody>
+</table></div>
+</dd></dl>
+</section>
 <section id="editops">
 <h2>Editops<a class="headerlink" href="#editops" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
@@ -281,6 +313,50 @@ the source string.</p>
 </pre></div>
 </div>
 </dd></dl>
+</dd></dl>
+</section>
+<section id="opcode">
+<h2>Opcode<a class="headerlink" href="#opcode" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="rapidfuzz.distance.Opcode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rapidfuzz.distance.</span></span><span class="sig-name descname"><span class="pre">Opcode</span></span><a class="headerlink" href="#rapidfuzz.distance.Opcode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tuple like object describing an edit operation.
+It is in the form (tag, src_start, src_end, dest_start, dest_end)</p>
+<p>The tags are strings, with these meanings:</p>
+<div class="table-wrapper"><table class="docutils align-default">
+<colgroup>
+<col style="width: 17%"/>
+<col style="width: 83%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>tag</p></th>
+<th class="head"><p>explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>‘replace’</p></td>
+<td><p>src[src_start:src_end] should be
+replaced by dest[dest_start:dest_end]</p></td>
+</tr>
+<tr class="row-odd"><td><p>‘delete’</p></td>
+<td><p>src[src_start:src_end] should be deleted.
+Note that dest_start==dest_end in this case.</p></td>
+</tr>
+<tr class="row-even"><td><p>‘insert’</p></td>
+<td><p>dest[dest_start:dest_end] should be inserted
+at src[src_start:src_start].
+Note that src_start==src_end in this case.</p></td>
+</tr>
+<tr class="row-odd"><td><p>‘equal’</p></td>
+<td><p>src[src_start:src_end] == dest[dest_start:dest_end]</p></td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Opcode is compatible with the tuples returned by difflib’s SequenceMatcher to make them
+interoperable</p>
+</div>
 </dd></dl>
 </section>
 <section id="opcodes">
@@ -428,7 +504,9 @@ the source string.</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">distance</a><ul>
+<li><a class="reference internal" href="#editop">Editop</a></li>
 <li><a class="reference internal" href="#editops">Editops</a></li>
+<li><a class="reference internal" href="#opcode">Opcode</a></li>
 <li><a class="reference internal" href="#opcodes">Opcodes</a></li>
 </ul>
 </li>
