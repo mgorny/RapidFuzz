@@ -5,11 +5,11 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Changelog" href="../changelog_link.html" /><link rel="prev" title="rapidfuzz.utils" href="../Usage/utils.html" />
 
-    <meta name="generator" content="sphinx-4.4.0, furo 2022.01.02"/>
+    <meta name="generator" content="sphinx-4.4.0, furo 2022.02.14.1"/>
         <title>Contributing - RapidFuzz 2.0.2 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=df49af52631e7917044a9c21a57f7b83170a6dd0" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=fade93df149f7c5fedb3ff897f799dc7d283b420" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=a8f031f701c6af50c9919b48f173a5785af06fac" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
     
     
 
@@ -41,17 +41,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
     <title>Contents</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-      <path stroke="none" d="M0 0h24v24H0z" />
-      <line x1="4" y1="6" x2="20" y2="6" />
-      <line x1="10" y1="12" x2="20" y2="12" />
-      <line x1="6" y1="18" x2="20" y2="18" />
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
     </svg>
   </symbol>
   <symbol id="svg-menu" viewBox="0 0 24 24">
     <title>Menu</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
       <line x1="3" y1="12" x2="21" y2="12"></line>
       <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -60,14 +56,14 @@
   </symbol>
   <symbol id="svg-arrow-right" viewBox="0 0 24 24">
     <title>Expand</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
       <polyline points="9 18 15 12 9 6"></polyline>
     </svg>
   </symbol>
   <symbol id="svg-sun" viewBox="0 0 24 24">
     <title>Light mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
       <circle cx="12" cy="12" r="5"></circle>
       <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -82,7 +78,7 @@
   </symbol>
   <symbol id="svg-moon" viewBox="0 0 24 24">
     <title>Dark mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
@@ -90,7 +86,7 @@
   </symbol>
   <symbol id="svg-sun-half" viewBox="0 0 24 24">
     <title>Auto light/dark mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
       <circle cx="12" cy="12" r="9" />
@@ -183,6 +179,7 @@
 
 </div>
 </div>
+
       </div>
       
     </div>
@@ -190,8 +187,7 @@
   <div class="main">
     <div class="content">
       <div class="article-container">
-        <div class="content-icon-container">
-          <div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -206,25 +202,25 @@
         </div>
         <article role="main">
           <section id="contributing">
-<h1>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h1>
+<h1>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">#</a></h1>
 <p>Interested in contributing to RapidFuzz? Want to report a bug?
 Before you do, please read the following guidelines.</p>
 <section id="submission-context">
-<h2>Submission context<a class="headerlink" href="#submission-context" title="Permalink to this headline">¶</a></h2>
+<h2>Submission context<a class="headerlink" href="#submission-context" title="Permalink to this headline">#</a></h2>
 <section id="got-a-question-or-problem">
-<h3>Got a question or problem?<a class="headerlink" href="#got-a-question-or-problem" title="Permalink to this headline">¶</a></h3>
+<h3>Got a question or problem?<a class="headerlink" href="#got-a-question-or-problem" title="Permalink to this headline">#</a></h3>
 <p>For questions you can reach us using
 <a class="reference external" href="https://github.com/maxbachmann/RapidFuzz/discussions">github discussions</a>.</p>
 </section>
 <section id="found-a-bug">
-<h3>Found a bug?<a class="headerlink" href="#found-a-bug" title="Permalink to this headline">¶</a></h3>
+<h3>Found a bug?<a class="headerlink" href="#found-a-bug" title="Permalink to this headline">#</a></h3>
 <p>If you found a bug in the source code, you can help us by submitting an issue
 to the <a class="reference external" href="https://github.com/maxbachmann/rapidfuzz/issues">issue tracker</a>
 in our GitHub repository. Even better, you can submit a Pull Request with a fix.
 However, before doing so, please read the <a class="reference internal" href="#submission-guidelines"><span class="std std-ref">Submission guidelines</span></a>.</p>
 </section>
 <section id="missing-a-feature">
-<h3>Missing a feature?<a class="headerlink" href="#missing-a-feature" title="Permalink to this headline">¶</a></h3>
+<h3>Missing a feature?<a class="headerlink" href="#missing-a-feature" title="Permalink to this headline">#</a></h3>
 <p>You can request a new feature by submitting an issue to our GitHub Repository.
 If you would like to implement a new feature, please submit an issue with a
 proposal for your work first, to be sure that it is of use for everyone.
@@ -242,9 +238,9 @@ overall functionality of the project.</p></li>
 </section>
 </section>
 <section id="submission-guidelines">
-<span id="id1"></span><h2>Submission guidelines<a class="headerlink" href="#submission-guidelines" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>Submission guidelines<a class="headerlink" href="#submission-guidelines" title="Permalink to this headline">#</a></h2>
 <section id="submitting-an-issue">
-<h3>Submitting an issue<a class="headerlink" href="#submitting-an-issue" title="Permalink to this headline">¶</a></h3>
+<h3>Submitting an issue<a class="headerlink" href="#submitting-an-issue" title="Permalink to this headline">#</a></h3>
 <p>Before you submit an issue, please search the issue tracker, maybe an issue for
 your problem already exists and the discussion might inform you of workarounds
 readily available.</p>
@@ -278,15 +274,21 @@ readily available.</p>
               </div>
             </a>
         </div>
-
-        <div class="related-information">
-              Copyright &#169; 2021, Max Bachmann |
-          Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
-          <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
-            | <a class="muted-link" href="../_sources/Contributing/index.rst.txt"
-               rel="nofollow">
-              Show Source
-            </a>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2021, Max Bachmann
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              
+            </div>
+          </div>
         </div>
         
       </footer>
