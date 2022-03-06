@@ -213,21 +213,278 @@
 <h1>rapidfuzz.string_metric<a class="headerlink" href="#rapidfuzz-string-metric" title="Permalink to this headline">#</a></h1>
 <section id="levenshtein">
 <h2>levenshtein<a class="headerlink" href="#levenshtein" title="Permalink to this headline">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="rapidfuzz.string_metric.levenshtein">
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.string_metric.</span></span><span class="sig-name descname"><span class="pre">levenshtein</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.string_metric.levenshtein" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculates the minimum number of insertions, deletions, and substitutions
+required to change one sequence into the other according to Levenshtein with custom
+costs for insertion, deletion and substitution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s1</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – First string to compare.</p></li>
+<li><p><strong>s2</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – Second string to compare.</p></li>
+<li><p><strong>weights</strong> (<em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>, </em><em>int</em><em>] or </em><em>None</em><em>, </em><em>optional</em>) – The weights for the three operations in the form
+(insertion, deletion, substitution). Default is (1, 1, 1),
+which gives all three operations a weight of 1.</p></li>
+<li><p><strong>processor</strong> (<em>callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
+comparing them. Default is None, which deactivates this behaviour.</p></li>
+<li><p><strong>max</strong> (<em>int</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – Maximum distance between s1 and s2, that is
+considered as a result. If the distance is bigger than max,
+max + 1 is returned instead. Default is None, which deactivates
+this behaviour.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>distance</strong> – distance between s1 and s2</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If unsupported weights are provided a ValueError is thrown</p></li>
+<li><p><strong>.. deprecated:</strong> – 2.0.0: Use <a class="reference internal" href="distance/Levenshtein.html#rapidfuzz.distance.Levenshtein.distance" title="rapidfuzz.distance.Levenshtein.distance"><code class="xref py py-func docutils literal notranslate"><span class="pre">rapidfuzz.distance.Levenshtein.distance()</span></code></a> instead.
+    This function will be removed in v3.0.0.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Find the Levenshtein distance between two strings:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">rapidfuzz.string_metric</span> <span class="kn">import</span> <span class="n">levenshtein</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">levenshtein</span><span class="p">(</span><span class="s2">"lewenstein"</span><span class="p">,</span> <span class="s2">"levenshtein"</span><span class="p">)</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+<p>Setting a maximum distance allows the implementation to select
+a more efficient implementation:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">levenshtein</span><span class="p">(</span><span class="s2">"lewenstein"</span><span class="p">,</span> <span class="s2">"levenshtein"</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+<p>It is possible to select different weights by passing a <cite>weight</cite>
+tuple.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">levenshtein</span><span class="p">(</span><span class="s2">"lewenstein"</span><span class="p">,</span> <span class="s2">"levenshtein"</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+</dd></dl>
 </section>
 <section id="normalized-levenshtein">
 <h2>normalized_levenshtein<a class="headerlink" href="#normalized-levenshtein" title="Permalink to this headline">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="rapidfuzz.string_metric.normalized_levenshtein">
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.string_metric.</span></span><span class="sig-name descname"><span class="pre">normalized_levenshtein</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.string_metric.normalized_levenshtein" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculates a normalized levenshtein distance using custom
+costs for insertion, deletion and substitution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s1</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – First string to compare.</p></li>
+<li><p><strong>s2</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – Second string to compare.</p></li>
+<li><p><strong>weights</strong> (<em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>, </em><em>int</em><em>] or </em><em>None</em><em>, </em><em>optional</em>) – The weights for the three operations in the form
+(insertion, deletion, substitution). Default is (1, 1, 1),
+which gives all three operations a weight of 1.</p></li>
+<li><p><strong>processor</strong> (<em>callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
+comparing them. Default is None, which deactivates this behaviour.</p></li>
+<li><p><strong>score_cutoff</strong> (<em>float</em><em>, </em><em>optional</em>) – Optional argument for a score threshold as a float between 0 and 100.
+For ratio &lt; score_cutoff 0 is returned instead. Default is 0,
+which deactivates this behaviour.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>similarity</strong> – similarity between s1 and s2 as a float between 0 and 100</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If unsupported weights are provided a ValueError is thrown</p></li>
+<li><p><strong>.. deprecated:</strong> – 2.0.0: Use <a class="reference internal" href="distance/Levenshtein.html#rapidfuzz.distance.Levenshtein.normalized_similarity" title="rapidfuzz.distance.Levenshtein.normalized_similarity"><code class="xref py py-func docutils literal notranslate"><span class="pre">rapidfuzz.distance.Levenshtein.normalized_similarity()</span></code></a> instead.
+    This function will be removed in v3.0.0.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#rapidfuzz.string_metric.levenshtein" title="rapidfuzz.string_metric.levenshtein"><code class="xref py py-obj docutils literal notranslate"><span class="pre">levenshtein</span></code></a></dt><dd><p>Levenshtein distance</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<p>Find the normalized Levenshtein distance between two strings:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">rapidfuzz.string_metric</span> <span class="kn">import</span> <span class="n">normalized_levenshtein</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">normalized_levenshtein</span><span class="p">(</span><span class="s2">"lewenstein"</span><span class="p">,</span> <span class="s2">"levenshtein"</span><span class="p">)</span>
+<span class="go">81.81818181818181</span>
+</pre></div>
+</div>
+<p>Setting a score_cutoff allows the implementation to select
+a more efficient implementation:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">normalized_levenshtein</span><span class="p">(</span><span class="s2">"lewenstein"</span><span class="p">,</span> <span class="s2">"levenshtein"</span><span class="p">,</span> <span class="n">score_cutoff</span><span class="o">=</span><span class="mi">85</span><span class="p">)</span>
+<span class="go">0.0</span>
+</pre></div>
+</div>
+<p>It is possible to select different weights by passing a <cite>weight</cite>
+tuple.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">normalized_levenshtein</span><span class="p">(</span><span class="s2">"lewenstein"</span><span class="p">,</span> <span class="s2">"levenshtein"</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="go">85.71428571428571</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>When a different processor is used s1 and s2 do not have to be strings</p>
+</div></blockquote>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">normalized_levenshtein</span><span class="p">([</span><span class="s2">"lewenstein"</span><span class="p">],</span> <span class="p">[</span><span class="s2">"levenshtein"</span><span class="p">],</span> <span class="n">processor</span><span class="o">=</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">81.81818181818181</span>
+</pre></div>
+</div>
+</dd></dl>
 </section>
 <section id="hamming">
 <h2>hamming<a class="headerlink" href="#hamming" title="Permalink to this headline">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="rapidfuzz.string_metric.hamming">
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.string_metric.</span></span><span class="sig-name descname"><span class="pre">hamming</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.string_metric.hamming" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculates the Hamming distance between two strings.
+The hamming distance is defined as the number of positions
+where the two strings differ. It describes the minimum
+amount of substitutions required to transform s1 into s2.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s1</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – First string to compare.</p></li>
+<li><p><strong>s2</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – Second string to compare.</p></li>
+<li><p><strong>processor</strong> (<em>callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
+comparing them. Default is None, which deactivates this behaviour.</p></li>
+<li><p><strong>max</strong> (<em>int</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – Maximum distance between s1 and s2, that is
+considered as a result. If the distance is bigger than max,
+max + 1 is returned instead. Default is None, which deactivates
+this behaviour.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>distance</strong> – distance between s1 and s2</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If s1 and s2 have a different length</p></li>
+<li><p><strong>.. deprecated:</strong> – 2.0.0: Use <a class="reference internal" href="distance/Hamming.html#rapidfuzz.distance.Hamming.distance" title="rapidfuzz.distance.Hamming.distance"><code class="xref py py-func docutils literal notranslate"><span class="pre">rapidfuzz.distance.Hamming.distance()</span></code></a> instead.
+    This function will be removed in v3.0.0.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 </section>
 <section id="normalized-hamming">
 <h2>normalized_hamming<a class="headerlink" href="#normalized-hamming" title="Permalink to this headline">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="rapidfuzz.string_metric.normalized_hamming">
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.string_metric.</span></span><span class="sig-name descname"><span class="pre">normalized_hamming</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.string_metric.normalized_hamming" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculates a normalized hamming distance</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s1</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – First string to compare.</p></li>
+<li><p><strong>s2</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – Second string to compare.</p></li>
+<li><p><strong>processor</strong> (<em>callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
+comparing them. Default is None, which deactivates this behaviour.</p></li>
+<li><p><strong>score_cutoff</strong> (<em>float</em><em>, </em><em>optional</em>) – Optional argument for a score threshold as a float between 0 and 100.
+For ratio &lt; score_cutoff 0 is returned instead. Default is 0,
+which deactivates this behaviour.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>similarity</strong> – similarity between s1 and s2 as a float between 0 and 100</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If s1 and s2 have a different length</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#rapidfuzz.string_metric.hamming" title="rapidfuzz.string_metric.hamming"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hamming</span></code></a></dt><dd><p>Hamming distance</p>
+</dd>
+</dl>
+<p><code class="xref py py-obj docutils literal notranslate"></code></p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Use</span></code></dt><dd><p>func:<cite>rapidfuzz.distance.Hamming.normalized_similarity</cite> instead. This function will be removed in v3.0.0.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
 </section>
 <section id="jaro-similarity">
 <h2>jaro_similarity<a class="headerlink" href="#jaro-similarity" title="Permalink to this headline">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="rapidfuzz.string_metric.jaro_similarity">
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.string_metric.</span></span><span class="sig-name descname"><span class="pre">jaro_similarity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.string_metric.jaro_similarity" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculates the jaro similarity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s1</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – First string to compare.</p></li>
+<li><p><strong>s2</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – Second string to compare.</p></li>
+<li><p><strong>processor</strong> (<em>callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
+comparing them. Default is None, which deactivates this behaviour.</p></li>
+<li><p><strong>score_cutoff</strong> (<em>float</em><em>, </em><em>optional</em>) – Optional argument for a score threshold as a float between 0 and 100.
+For ratio &lt; score_cutoff 0 is returned instead. Default is 0,
+which deactivates this behaviour.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>similarity</strong> (<em>float</em>) – similarity between s1 and s2 as a float between 0 and 100</p></li>
+<li><p><em>.. deprecated:: 2.0.0</em> – Use <a class="reference internal" href="distance/Jaro.html#rapidfuzz.distance.Jaro.similarity" title="rapidfuzz.distance.Jaro.similarity"><code class="xref py py-func docutils literal notranslate"><span class="pre">rapidfuzz.distance.Jaro.similarity()</span></code></a> instead.
+This function will be removed in v3.0.0.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
 </section>
 <section id="jaro-winkler-similarity">
 <h2>jaro_winkler_similarity<a class="headerlink" href="#jaro-winkler-similarity" title="Permalink to this headline">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="rapidfuzz.string_metric.jaro_winkler_similarity">
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.string_metric.</span></span><span class="sig-name descname"><span class="pre">jaro_winkler_similarity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.string_metric.jaro_winkler_similarity" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculates the jaro winkler similarity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s1</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – First string to compare.</p></li>
+<li><p><strong>s2</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – Second string to compare.</p></li>
+<li><p><strong>prefix_weight</strong> (<em>float</em><em>, </em><em>optional</em>) – Weight used for the common prefix of the two strings.
+Has to be between 0 and 0.25. Default is 0.1.</p></li>
+<li><p><strong>processor</strong> (<em>callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
+comparing them. Default is None, which deactivates this behaviour.</p></li>
+<li><p><strong>score_cutoff</strong> (<em>float</em><em>, </em><em>optional</em>) – Optional argument for a score threshold as a float between 0 and 100.
+For ratio &lt; score_cutoff 0 is returned instead. Default is 0,
+which deactivates this behaviour.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>similarity</strong> – similarity between s1 and s2 as a float between 0 and 100</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If prefix_weight is invalid</p></li>
+<li><p><strong>.. deprecated:</strong> – 2.0.0: Use <a class="reference internal" href="distance/JaroWinkler.html#rapidfuzz.distance.JaroWinkler.similarity" title="rapidfuzz.distance.JaroWinkler.similarity"><code class="xref py py-func docutils literal notranslate"><span class="pre">rapidfuzz.distance.JaroWinkler.similarity()</span></code></a> instead.
+    This function will be removed in v3.0.0.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 </section>
 </section>
 

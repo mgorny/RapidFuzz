@@ -215,6 +215,37 @@
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h2>
 <section id="distance">
 <h3>distance<a class="headerlink" href="#distance" title="Permalink to this headline">#</a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="rapidfuzz.distance.Hamming.distance">
+<span class="sig-prename descclassname"><span class="pre">rapidfuzz.distance.Hamming.</span></span><span class="sig-name descname"><span class="pre">distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.distance.Hamming.distance" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculates the Hamming distance between two strings.
+The hamming distance is defined as the number of positions
+where the two strings differ. It describes the minimum
+amount of substitutions required to transform s1 into s2.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s1</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – First string to compare.</p></li>
+<li><p><strong>s2</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – Second string to compare.</p></li>
+<li><p><strong>processor</strong> (<em>callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
+comparing them. Default is None, which deactivates this behaviour.</p></li>
+<li><p><strong>score_cutoff</strong> (<em>int</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – Maximum distance between s1 and s2, that is
+considered as a result. If the distance is bigger than score_cutoff,
+score_cutoff + 1 is returned instead. Default is None, which deactivates
+this behaviour.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>distance</strong> – distance between s1 and s2</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If s1 and s2 have a different length</p>
+</dd>
+</dl>
+</dd></dl>
 </section>
 <section id="normalized-distance">
 <h3>normalized_distance<a class="headerlink" href="#normalized-distance" title="Permalink to this headline">#</a></h3>
