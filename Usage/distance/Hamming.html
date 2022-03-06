@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Jaro" href="Jaro.html" /><link rel="prev" title="Indel" href="Indel.html" />
 
-    <meta name="generator" content="sphinx-4.4.0, furo 2022.02.23"/>
+    <meta name="generator" content="sphinx-4.4.0, furo 2022.03.04"/>
         <title>Hamming - RapidFuzz 2.0.5 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=3c656993158f05539f962c5cea52a5e6c184bb8c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
     
     
@@ -20,16 +20,18 @@
   --color-code-foreground: #f8f8f2;
   
   }
-  body[data-theme="dark"] {
-    --color-code-background: #272822;
-  --color-code-foreground: #f8f8f2;
-  
-  }
-  @media (prefers-color-scheme: dark) {
-    body:not([data-theme="light"]) {
+  @media not print {
+    body[data-theme="dark"] {
       --color-code-background: #272822;
   --color-code-foreground: #f8f8f2;
   
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #272822;
+  --color-code-foreground: #f8f8f2;
+  
+      }
     }
   }
 </style></head>
@@ -213,37 +215,6 @@
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h2>
 <section id="distance">
 <h3>distance<a class="headerlink" href="#distance" title="Permalink to this headline">#</a></h3>
-<dl class="py function">
-<dt class="sig sig-object py" id="rapidfuzz.distance.Hamming.distance">
-<span class="sig-prename descclassname"><span class="pre">rapidfuzz.distance.Hamming.</span></span><span class="sig-name descname"><span class="pre">distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.distance.Hamming.distance" title="Permalink to this definition">#</a></dt>
-<dd><p>Calculates the Hamming distance between two strings.
-The hamming distance is defined as the number of positions
-where the two strings differ. It describes the minimum
-amount of substitutions required to transform s1 into s2.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>s1</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – First string to compare.</p></li>
-<li><p><strong>s2</strong> (<em>Sequence</em><em>[</em><em>Hashable</em><em>]</em>) – Second string to compare.</p></li>
-<li><p><strong>processor</strong> (<em>callable</em><em>, </em><em>optional</em>) – Optional callable that is used to preprocess the strings before
-comparing them. Default is None, which deactivates this behaviour.</p></li>
-<li><p><strong>score_cutoff</strong> (<em>int</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – Maximum distance between s1 and s2, that is
-considered as a result. If the distance is bigger than score_cutoff,
-score_cutoff + 1 is returned instead. Default is None, which deactivates
-this behaviour.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>distance</strong> – distance between s1 and s2</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-<dt class="field-even">Raises</dt>
-<dd class="field-even"><p><strong>ValueError</strong> – If s1 and s2 have a different length</p>
-</dd>
-</dl>
-</dd></dl>
 </section>
 <section id="normalized-distance">
 <h3>normalized_distance<a class="headerlink" href="#normalized-distance" title="Permalink to this headline">#</a></h3>

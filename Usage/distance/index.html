@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Levenshtein" href="Levenshtein.html" /><link rel="prev" title="rapidfuzz.process" href="../process.html" />
 
-    <meta name="generator" content="sphinx-4.4.0, furo 2022.02.23"/>
+    <meta name="generator" content="sphinx-4.4.0, furo 2022.03.04"/>
         <title>distance - RapidFuzz 2.0.5 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=3c656993158f05539f962c5cea52a5e6c184bb8c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
     
     
@@ -20,16 +20,18 @@
   --color-code-foreground: #f8f8f2;
   
   }
-  body[data-theme="dark"] {
-    --color-code-background: #272822;
-  --color-code-foreground: #f8f8f2;
-  
-  }
-  @media (prefers-color-scheme: dark) {
-    body:not([data-theme="light"]) {
+  @media not print {
+    body[data-theme="dark"] {
       --color-code-background: #272822;
   --color-code-foreground: #f8f8f2;
   
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #272822;
+  --color-code-foreground: #f8f8f2;
+  
+      }
     }
   }
 </style></head>
@@ -211,237 +213,15 @@
 <h1>distance<a class="headerlink" href="#distance" title="Permalink to this headline">#</a></h1>
 <section id="editop">
 <h2>Editop<a class="headerlink" href="#editop" title="Permalink to this headline">#</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="rapidfuzz.distance.Editop">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rapidfuzz.distance.</span></span><span class="sig-name descname"><span class="pre">Editop</span></span><a class="headerlink" href="#rapidfuzz.distance.Editop" title="Permalink to this definition">#</a></dt>
-<dd><p>Tuple like object describing an edit operation.
-It is in the form (tag, src_pos, dest_pos)</p>
-<p>The tags are strings, with these meanings:</p>
-<div class="table-wrapper"><table class="docutils align-default">
-<colgroup>
-<col style="width: 18%"/>
-<col style="width: 82%"/>
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>tag</p></th>
-<th class="head"><p>explanation</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>‘replace’</p></td>
-<td><p>src[src_pos] should be replaced by dest[dest_pos]</p></td>
-</tr>
-<tr class="row-odd"><td><p>‘delete’</p></td>
-<td><p>src[src_pos] should be deleted</p></td>
-</tr>
-<tr class="row-even"><td><p>‘insert’</p></td>
-<td><p>dest[dest_pos] should be inserted at src[src_pos]</p></td>
-</tr>
-</tbody>
-</table></div>
-</dd></dl>
 </section>
 <section id="editops">
 <h2>Editops<a class="headerlink" href="#editops" title="Permalink to this headline">#</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="rapidfuzz.distance.Editops">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rapidfuzz.distance.</span></span><span class="sig-name descname"><span class="pre">Editops</span></span><a class="headerlink" href="#rapidfuzz.distance.Editops" title="Permalink to this definition">#</a></dt>
-<dd><p>List like object of Editos describing how to turn s1 into s2.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="rapidfuzz.distance.Editops.as_list">
-<span class="sig-name descname"><span class="pre">as_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.distance.Editops.as_list" title="Permalink to this definition">#</a></dt>
-<dd><p>Convert Editops to a list of tuples.</p>
-<p>This is the equivalent of <code class="docutils literal notranslate"><span class="pre">[x</span> <span class="pre">for</span> <span class="pre">x</span> <span class="pre">in</span> <span class="pre">editops]</span></code></p>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="rapidfuzz.distance.Editops.as_opcodes">
-<span class="sig-name descname"><span class="pre">as_opcodes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.distance.Editops.as_opcodes" title="Permalink to this definition">#</a></dt>
-<dd><p>Convert to Opcodes</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>opcodes</strong> – Editops converted to Opcodes</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="#rapidfuzz.distance.Opcodes" title="rapidfuzz.distance.Opcodes">Opcodes</a></p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="rapidfuzz.distance.Editops.copy">
-<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.distance.Editops.copy" title="Permalink to this definition">#</a></dt>
-<dd><p>performs copy of Editops</p>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="rapidfuzz.distance.Editops.from_opcodes">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_opcodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">opcodes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.distance.Editops.from_opcodes" title="Permalink to this definition">#</a></dt>
-<dd><p>Create Editops from Opcodes</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>opcodes</strong> (<a class="reference internal" href="#rapidfuzz.distance.Opcodes" title="rapidfuzz.distance.Opcodes"><em>Opcodes</em></a>) – opcodes to convert to editops</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>editops</strong> – Opcodes converted to Editops</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#rapidfuzz.distance.Editops" title="rapidfuzz.distance.Editops">Editops</a></p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="rapidfuzz.distance.Editops.inverse">
-<span class="sig-name descname"><span class="pre">inverse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.distance.Editops.inverse" title="Permalink to this definition">#</a></dt>
-<dd><p>Invert Editops, so it describes how to transform the destination string to
-the source string.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>editops</strong> – inverted Editops</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="#rapidfuzz.distance.Editops" title="rapidfuzz.distance.Editops">Editops</a></p>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">rapidfuzz.distance</span> <span class="kn">import</span> <span class="n">Levenshtein</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Levenshtein</span><span class="o">.</span><span class="n">editops</span><span class="p">(</span><span class="s1">'spam'</span><span class="p">,</span> <span class="s1">'park'</span><span class="p">)</span>
-<span class="go">[Editop(tag=delete, src_pos=0, dest_pos=0),</span>
-<span class="go"> Editop(tag=replace, src_pos=3, dest_pos=2),</span>
-<span class="go"> Editop(tag=insert, src_pos=4, dest_pos=3)]</span>
-</pre></div>
-</div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Levenshtein</span><span class="o">.</span><span class="n">editops</span><span class="p">(</span><span class="s1">'spam'</span><span class="p">,</span> <span class="s1">'park'</span><span class="p">)</span><span class="o">.</span><span class="n">inverse</span><span class="p">()</span>
-<span class="go">[Editop(tag=insert, src_pos=0, dest_pos=0),</span>
-<span class="go"> Editop(tag=replace, src_pos=2, dest_pos=3),</span>
-<span class="go"> Editop(tag=delete, src_pos=3, dest_pos=4)]</span>
-</pre></div>
-</div>
-</dd></dl>
-</dd></dl>
 </section>
 <section id="opcode">
 <h2>Opcode<a class="headerlink" href="#opcode" title="Permalink to this headline">#</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="rapidfuzz.distance.Opcode">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rapidfuzz.distance.</span></span><span class="sig-name descname"><span class="pre">Opcode</span></span><a class="headerlink" href="#rapidfuzz.distance.Opcode" title="Permalink to this definition">#</a></dt>
-<dd><p>Tuple like object describing an edit operation.
-It is in the form (tag, src_start, src_end, dest_start, dest_end)</p>
-<p>The tags are strings, with these meanings:</p>
-<div class="table-wrapper"><table class="docutils align-default">
-<colgroup>
-<col style="width: 17%"/>
-<col style="width: 83%"/>
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>tag</p></th>
-<th class="head"><p>explanation</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>‘replace’</p></td>
-<td><p>src[src_start:src_end] should be
-replaced by dest[dest_start:dest_end]</p></td>
-</tr>
-<tr class="row-odd"><td><p>‘delete’</p></td>
-<td><p>src[src_start:src_end] should be deleted.
-Note that dest_start==dest_end in this case.</p></td>
-</tr>
-<tr class="row-even"><td><p>‘insert’</p></td>
-<td><p>dest[dest_start:dest_end] should be inserted
-at src[src_start:src_start].
-Note that src_start==src_end in this case.</p></td>
-</tr>
-<tr class="row-odd"><td><p>‘equal’</p></td>
-<td><p>src[src_start:src_end] == dest[dest_start:dest_end]</p></td>
-</tr>
-</tbody>
-</table></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Opcode is compatible with the tuples returned by difflib’s SequenceMatcher to make them
-interoperable</p>
-</div>
-</dd></dl>
 </section>
 <section id="opcodes">
 <h2>Opcodes<a class="headerlink" href="#opcodes" title="Permalink to this headline">#</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="rapidfuzz.distance.Opcodes">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rapidfuzz.distance.</span></span><span class="sig-name descname"><span class="pre">Opcodes</span></span><a class="headerlink" href="#rapidfuzz.distance.Opcodes" title="Permalink to this definition">#</a></dt>
-<dd><p>List like object of Opcodes describing how to turn s1 into s2.
-The first Opcode has src_start == dest_start == 0, and remaining tuples
-have src_start == the src_end from the tuple preceding it,
-and likewise for dest_start == the previous dest_end.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="rapidfuzz.distance.Opcodes.as_editops">
-<span class="sig-name descname"><span class="pre">as_editops</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.distance.Opcodes.as_editops" title="Permalink to this definition">#</a></dt>
-<dd><p>Convert Opcodes to Editops</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>editops</strong> – Opcodes converted to Editops</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="#rapidfuzz.distance.Editops" title="rapidfuzz.distance.Editops">Editops</a></p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="rapidfuzz.distance.Opcodes.as_list">
-<span class="sig-name descname"><span class="pre">as_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.distance.Opcodes.as_list" title="Permalink to this definition">#</a></dt>
-<dd><p>Convert Opcodes to a list of tuples, which is compatible
-with the opcodes of difflibs SequenceMatcher.</p>
-<p>This is the equivalent of <code class="docutils literal notranslate"><span class="pre">[x</span> <span class="pre">for</span> <span class="pre">x</span> <span class="pre">in</span> <span class="pre">opcodes]</span></code></p>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="rapidfuzz.distance.Opcodes.copy">
-<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.distance.Opcodes.copy" title="Permalink to this definition">#</a></dt>
-<dd><p>performs copy of Opcodes</p>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="rapidfuzz.distance.Opcodes.from_editops">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_editops</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">editops</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.distance.Opcodes.from_editops" title="Permalink to this definition">#</a></dt>
-<dd><p>Create Opcodes from Editops</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>editops</strong> (<a class="reference internal" href="#rapidfuzz.distance.Editops" title="rapidfuzz.distance.Editops"><em>Editops</em></a>) – editops to convert to opcodes</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>opcodes</strong> – Editops converted to Opcodes</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#rapidfuzz.distance.Opcodes" title="rapidfuzz.distance.Opcodes">Opcodes</a></p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="rapidfuzz.distance.Opcodes.inverse">
-<span class="sig-name descname"><span class="pre">inverse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rapidfuzz.distance.Opcodes.inverse" title="Permalink to this definition">#</a></dt>
-<dd><p>Invert Opcodes, so it describes how to transform the destination string to
-the source string.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>opcodes</strong> – inverted Opcodes</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="#rapidfuzz.distance.Opcodes" title="rapidfuzz.distance.Opcodes">Opcodes</a></p>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">rapidfuzz.distance</span> <span class="kn">import</span> <span class="n">Levenshtein</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Levenshtein</span><span class="o">.</span><span class="n">opcodes</span><span class="p">(</span><span class="s1">'spam'</span><span class="p">,</span> <span class="s1">'park'</span><span class="p">)</span>
-<span class="go">[Opcode(tag=delete, src_start=0, src_end=1, dest_start=0, dest_end=0),</span>
-<span class="go"> Opcode(tag=equal, src_start=1, src_end=3, dest_start=0, dest_end=2),</span>
-<span class="go"> Opcode(tag=replace, src_start=3, src_end=4, dest_start=2, dest_end=3),</span>
-<span class="go"> Opcode(tag=insert, src_start=4, src_end=4, dest_start=3, dest_end=4)]</span>
-</pre></div>
-</div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Levenshtein</span><span class="o">.</span><span class="n">opcodes</span><span class="p">(</span><span class="s1">'spam'</span><span class="p">,</span> <span class="s1">'park'</span><span class="p">)</span><span class="o">.</span><span class="n">inverse</span><span class="p">()</span>
-<span class="go">[Opcode(tag=insert, src_start=0, src_end=0, dest_start=0, dest_end=1),</span>
-<span class="go"> Opcode(tag=equal, src_start=0, src_end=2, dest_start=1, dest_end=3),</span>
-<span class="go"> Opcode(tag=replace, src_start=2, src_end=3, dest_start=3, dest_end=4),</span>
-<span class="go"> Opcode(tag=delete, src_start=3, src_end=4, dest_start=4, dest_end=4)]</span>
-</pre></div>
-</div>
-</dd></dl>
-</dd></dl>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Levenshtein.html">Levenshtein</a></li>
